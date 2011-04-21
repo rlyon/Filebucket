@@ -46,10 +46,10 @@
 				<%= link_to folder.name, browse_path(folder) %>
 			</div>
 			<div class="file_size">
-				add num files
+				<%= pluralize(folder.number_of_files, 'File') %>
 			</div>
 			<div class="file_last_updated">
-				Add last file mod
+				<%= folder.last_updated %>
 			</div>
 			<div class="actions">
 				<div class="share">
