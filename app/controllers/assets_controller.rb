@@ -12,7 +12,7 @@ class AssetsController < ApplicationController
 		@asset = current_user.assets.build
 		if params[:folder_id]
 			@current_folder = current_user.folders.find(params[:folder_id])
-		@asset.folder_id = @current_folder.id
+			@asset.folder_id = @current_folder.id
 		end
 	end
 
@@ -21,6 +21,8 @@ class AssetsController < ApplicationController
 		if @asset.save
 			flash[:notice] = "Successfully created asset."
 			if @asset.folder
+				@asset.folder.updated_at = @asset.updated_at
+				@asset.folder.save
 				redirect_to browse_path(@asset.folder)
 			else
 				redirect_to root_url
