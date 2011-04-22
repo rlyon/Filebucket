@@ -5,25 +5,7 @@
 </p>
 <% else %>
 <%= render :partial => "breadcrumbs" %>
-<div id="menu">
-	<ul id="top_menu">
-		<% if @current_folder %>
-		<li>
-			<%= link_to "Upload File", new_sub_file_path(@current_folder) %>
-		</li>
-		<li>
-			<%= link_to "New Folder", new_sub_folder_path(@current_folder) %>
-		</li>
-		<% else %>
-		<li>
-			<%= link_to "Upload File", new_asset_path %>
-		</li>
-		<li>
-			<%= link_to "New Folder", new_folder_path %>
-		</li>
-		<% end %>
-	</ul>
-</div>
+
 <div class="asset_list_header">
 	<div class="file_name_header">
 		File Name
@@ -43,7 +25,7 @@
 		<div class="asset_details folder_documents">
 			<% end %>
 			<div class="file_name">
-				<%= link_to folder.name, browse_path(folder) %>
+				<%= link_to truncate(folder.name, :length => 50), browse_path(folder) %>
 			</div>
 			<div class="file_size">
 				<%= pluralize(folder.number_of_files, 'File') %>
@@ -67,7 +49,7 @@
 		<% @assets.each do |asset| %>
 		<div class="asset_details">
 			<div class="file_name file">
-				<%= link_to asset.file_name, download_url(asset) %>
+				<%= link_to truncate(asset.file_name, :length => 50), download_url(asset) %>
 			</div>
 			<div class="file_size">
 				<%= number_to_human_size(asset.file_size, :precision => 2) %>
