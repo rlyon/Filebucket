@@ -1,22 +1,44 @@
-<% title "Folders" %>
+<%= render :partial => "home/breadcrumbs" %>
 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Parent</th>
-		<th>User</th>
-	</tr>
-	<% for folder in @folders %>
-	<tr>
-		<td><%= folder.name %></td>
-		<td><%= folder.parent_id %></td>
-		<td><%= folder.user_id %></td>
-		<td><%= link_to "Show", folder %></td>
-		<td><%= link_to "Edit", edit_folder_path(folder) %></td>
-		<td><%= link_to "Destroy", folder, :confirm => 'Are you sure?', :method => :delete %></td>
-	</tr>
+<div class="asset_list_header">
+	<div class="file_name_header">
+		File Name
+	</div>
+	<div class="file_owner_header">
+		Owner
+	</div>
+	<div class="file_size_header">
+		Size
+	</div>
+	<div class="file_last_updated_header">
+		Modified
+	</div>
+</div>
+
+<% @folders.each do |folder| %>
+	<% if folder.is_public? %>
+	<% if folder.children.empty? and folder.assets.empty? %>
+	<div class="asset_details folder">
+	<% else %>
+	<div class="asset_details folder_documents">
 	<% end %>
-</table>
-<p>
-	<%= link_to "New Folder", new_folder_path %>
-</p>
+			
+		<div class="file_name">
+			<%= link_to truncate(folder.name, :length => 50), public_path(folder) %>
+		</div>
+		
+		<div class="file_owner">
+			<%= folder.user.name %>
+		</div>
+		
+		<div class="file_size">
+			<%= pluralize(folder.number_of_files, 'File') %>
+		</div>
+		
+		<div class="file_last_updated">
+			<%= folder.last_updated %>
+		</div>
+	</div>
+	
+<% end %>
+<% end %>

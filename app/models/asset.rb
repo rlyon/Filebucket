@@ -5,7 +5,7 @@ class Asset < ActiveRecord::Base
 	belongs_to :folder
 
 	has_attached_file :uploaded_file,
-		:url => "/assets/get/:id",
+		:url => "/download/:id",
 		:path => "#{Rails.root.to_s}/assets/:id/:basename.:extension"
 
 	validates_attachment_size :uploaded_file, :less_than => 10.megabytes

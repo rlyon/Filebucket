@@ -3,6 +3,8 @@ class Folder < ActiveRecord::Base
 	belongs_to :user
 	has_many :assets, :dependent => :destroy
 	has_many :shared_folders, :dependent => :destroy
+	has_many :public_folders, :dependent => :destroy
+	
 	attr_accessible :name, :parent_id, :user_id
 	
 	def last_updated
@@ -12,4 +14,12 @@ class Folder < ActiveRecord::Base
 	def number_of_files
 		assets.length
 	end
+	
+  def is_public?
+  	public
+  end
+  
+  def is_root?
+  	root == id
+  end
 end

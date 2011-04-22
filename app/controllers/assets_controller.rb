@@ -60,12 +60,16 @@ class AssetsController < ApplicationController
 	end
 
 	def get
-		asset = current_user.assets.find_by_id(params[:id])
+		asset = current_user.assets.find(params[:id])
 		if asset
 			send_file asset.uploaded_file.path, :type => asset.uploaded_file_content_type
 		else
 			flash[:error] = "You can't access files that don't belong to you!"
-			redirect_to assets_path
+			if @parent_folder
+				redirect_to browse_path(@parent_folder)
+			else
+				redirect_to root_url
+			end
 		end
 	end
 end

@@ -9,7 +9,7 @@ a img {
 	border: none;
 }
 a {
-	color: #FFFF00;
+	color: #00f;
 }
 .clear {
 	clear: both;
@@ -80,14 +80,21 @@ a {
 #login_user_status {
 	float:right;
 }
+#login_user_status a {
+	color: #fff;
+	text-decoration: none;
+}
+#login_user_status a:hover {
+	color: #000;
+}
 .asset_list_header, .asset_list, .asset_details {
-	width:920px;
+
 	font-weight:bold;
 	font-size:12px;
 	overflow:hidden;
 }
 .file_name_header, .file_name {
-	width:350px;
+	width:300px;
 	float:left;
 	padding-left:30px;
 }
@@ -99,6 +106,10 @@ a {
 	width:150px;
 	float:left;
 }
+.file_owner_header, .file_owner {
+	width:150px;
+	float:left;
+}
 .asset_list {
 	padding:20px 0;
 }
@@ -107,7 +118,7 @@ a {
 	height:25px;
 	line-height:25px;
 	border:1px solid #FFF;
-	width:920px;
+	
 	color:#4F4F4F;
 }
 .asset_details a, .asset_details a:visited {
@@ -184,16 +195,21 @@ a {
 	float:right;
 	font-size:11px;
 }
-.share, .rename, .download, .delete {
+.share, .rename, .download, .delete, .public, .private {
 	float:left;
 }
-.asset_details .share a, .asset_details .rename a, .asset_details .download a, .asset_details .delete a {
+.asset_details .share a, .asset_details .rename a, .asset_details .download a, .asset_details .delete a, .public a, .private a {
 	border: 1px solid #CFE9FF;
 	font-size: 11px;
 	margin-left: 5px;
 	padding: 0 2px;
 }
-.asset_details .share a:hover, .asset_details .rename a:hover, .asset_details .download a:hover, .asset_details .delete a:hover {
+.asset_details .share a:hover, 
+.asset_details .rename a:hover, 
+.asset_details .download a:hover, 
+.asset_details .delete a:hover, 
+.asset_details .public a:hover,
+.asset_details .private a:hover {
 	border:1px solid #8FCDFF;
 }
 .asset_details .delete a {
@@ -203,6 +219,22 @@ a {
 .asset_details .delete a:hover {
 	color:#BF0B12;
 	border:1px solid #FF8F93;
+}
+.asset_details .public a {
+	color:#BF0B12;
+	border:1px solid #FFCFD1;
+}
+.asset_details .public a:hover {
+	color:#BF0B12;
+	border:1px solid #FF8F93;
+}
+.asset_details .private a {
+	color:#393;
+	border:1px solid #9F9;
+}
+.asset_details .private a:hover {
+	color:#393;
+	border:1px solid #6C6;
 }
 
 .ui-button-text-only .ui-button-text {
