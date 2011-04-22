@@ -1,7 +1,6 @@
 $( function () {
 	//open the invitation form when a share button is clicked
-	$( ".share a" )
-	.button()
+	$( ".share a" ).button()
 	.click( function() {
 		//assign this specific Share link element into a variable called "a"
 		var a = this;
