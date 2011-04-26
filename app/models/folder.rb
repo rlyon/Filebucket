@@ -3,7 +3,6 @@ class Folder < ActiveRecord::Base
 	belongs_to :user
 	has_many :assets, :dependent => :destroy
 	has_many :shared_folders, :dependent => :destroy
-	has_many :public_folders, :dependent => :destroy
 	
 	attr_accessible :name, :parent_id, :user_id
 	
@@ -22,4 +21,5 @@ class Folder < ActiveRecord::Base
   def is_root?
   	root == id
   end
+
 end

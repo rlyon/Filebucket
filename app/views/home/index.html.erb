@@ -44,7 +44,7 @@
 				<% if folder.parent.nil? %>
 				<%= link_to "Set Private", publicize_path(folder) %>
 				<% elsif folder.parent.is_public? %>
-				<%= link_to "Public", "#" %>
+				<!-- Parent is public -->
 				<% else %>
 				<%= link_to "Set Private", publicize_path(folder) %>
 				<% end %>
@@ -72,8 +72,8 @@
 <% end %>
 
 <% @assets.each do |asset| %>
-<div class="asset_details">
-	<div class="file_name file">
+<div class="asset_details file">
+	<div class="file_name">
 		<%= link_to truncate(asset.file_name, :length => 50), download_path(asset) %>
 	</div>
 	

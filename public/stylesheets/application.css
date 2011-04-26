@@ -16,6 +16,7 @@ a {
 	height: 0;
 	overflow: hidden;
 }
+
 #container {
 	width: 920px;
 	margin: 0 auto;
@@ -36,6 +37,7 @@ a {
 	background-color: #FCC;
 	border: solid 1px #C66;
 }
+
 .fieldWithErrors {
 	display: inline;
 }
@@ -87,12 +89,13 @@ a {
 #login_user_status a:hover {
 	color: #000;
 }
-.asset_list_header, .asset_list, .asset_details {
 
+.asset_list_header, .asset_list, .asset_details {
 	font-weight:bold;
 	font-size:12px;
 	overflow:hidden;
-}
+} 
+
 .file_name_header, .file_name {
 	width:300px;
 	float:left;
@@ -110,6 +113,7 @@ a {
 	width:150px;
 	float:left;
 }
+
 .asset_list {
 	padding:20px 0;
 }
@@ -117,8 +121,7 @@ a {
 	font-weight:normal;
 	height:25px;
 	line-height:25px;
-	border:1px solid #FFF;
-	
+	border:1px solid #FFF; 
 	color:#4F4F4F;
 }
 .asset_details a, .asset_details a:visited {
@@ -126,6 +129,7 @@ a {
 	color:#1D96EF;
 	font-size:12px;
 }
+
 #menu {
 	width:960px;
 	padding:0;
@@ -156,33 +160,39 @@ a {
 	background:#DFF1FF;
 	border:1px solid #AFDDFF;
 }
-.folder {
-	background:url("../images/folder.png") no-repeat scroll left center transparent;
-}
-.folder_documents {
-	background:url("../images/folder_documents.png") no-repeat scroll left center transparent;
-}
+
 .file {
 	background:url("../images/file.png") no-repeat scroll left center transparent;
 }
-.folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover, .folder_documents.asset_details:hover {
-	border:1px solid #DFDFDF;
+.file.asset_details:hover {
+	background:url("../images/file.png") no-repeat scroll left center #EFEFEF;
+}
+
+.folder {
+	background:url("../images/folder.png") no-repeat scroll left center transparent;
 }
 .folder.asset_details:hover {
 	background:url("../images/folder.png") no-repeat scroll left center #EFEFEF;
 }
+
+.folder_documents {
+	background:url("../images/folder_documents.png") no-repeat scroll left center transparent;
+}
 .folder_documents.asset_details:hover {
 	background:url("../images/folder_documents.png") no-repeat scroll left #EFEFEF
 }
+
 .shared_folder {
 	background:url("../images/shared_folder.png") no-repeat scroll left center transparent;
 }
 .shared_folder.asset_details:hover {
 	background:url("../images/shared_folder.png") no-repeat scroll left center #EFEFEF;
 }
-.file.asset_details:hover {
-	background:url("../images/file.png") no-repeat scroll left center #EFEFEF;
+
+.folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover, .folder_documents.asset_details:hover {
+	border:1px solid #DFDFDF;
 }
+
 .breadcrumbs {
 	margin:10px 0;
 	font-weight:bold;
@@ -191,6 +201,7 @@ a {
 	color:#1D96EF;
 	text-decoration:none;
 }
+
 .actions {
 	float:right;
 	font-size:11px;
@@ -247,6 +258,7 @@ a {
 	font-weight:normal;
 	color: #fff;
 }
+
 #invitation_form{
 	font-size:14px;
 }

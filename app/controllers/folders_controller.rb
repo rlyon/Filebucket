@@ -2,6 +2,7 @@ class FoldersController < ApplicationController
 	before_filter :authenticate_user!, :except => [:index, :browse]
 	def index
 		@folders = Folder.where(:public => true).order("updated_at desc").roots
+		@assets = [] # Don't share files on the index
 	end
 
 	def show
@@ -18,6 +19,14 @@ class FoldersController < ApplicationController
 
 	def create
 		@folder = current_user.folders.new(params[:folder])
+		
+		# inherit visibility from parent
+		unless @folder.parent.nil?
+		  @folder.public = @folder.parent.is_public?
+		end
+		
+		# placeholder for inheriting shared settings.
+		
 		if @folder.save
 			flash[:notice] = "Successfully created folder."
 
@@ -95,7 +104,6 @@ class FoldersController < ApplicationController
 	end
 	
 	def browse
-
 		@current_folder = Folder.find(params[:folder_id])
 
 		if @current_folder.is_public?
