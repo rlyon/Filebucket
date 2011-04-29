@@ -1,4 +1,5 @@
 <div id="menu">
+<% unless @is_this_folder_being_shared %>
 	<ul id="top_menu">
 		<% if user_signed_in? %>
 		<% if @current_folder %>
@@ -25,4 +26,7 @@
 			<%= link_to "Help", "#" %>
 		</li>
 	</ul>
-</div> 
+</div>
+<% else %>
+	<h3>This folder is being shared to you by <%= @current_folder.user.name %></h3>
+<% end %>

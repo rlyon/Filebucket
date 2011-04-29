@@ -66,7 +66,7 @@
 				<%= link_to "Rename", rename_folder_path(folder) %>
 			</div>
 			<div class="delete">
-				<%= link_to "Delete", folder, :confirm => 'Are you sure to delete the folder and all of its contents?', :method => :delete %>
+				<%= link_to "Delete", folder, :confirm => 'Are you sure to delete the folder and all of its contents?', :method => :delete unless @is_this_folder_being_shared %>
 			</div>
 			<div class="share">
 				<%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name %>
