@@ -21,5 +21,9 @@ class Folder < ActiveRecord::Base
   def is_root?
   	root == id
   end
+  
+  def shared?
+  	!self.shared_assets.empty?
+  end
 
 end

@@ -21,9 +21,10 @@
 <% @folders.each do |folder| %>
 	
 	<% if folder.children.empty? and folder.assets.empty? %>
-	<div class="asset_details folder">
+	<div class="asset_details folder" id="folder_">
 	<% else %>
-	<div class="asset_details folder_documents">
+	<div class="asset_details folder_documents" id="folder_">
+	<!-- <div class="asset_details folder_documents"> -->
 	<% end %>
 			
 		<div class="file_name">
@@ -54,15 +55,14 @@
 				<%= link_to "Set Public", publicize_path(folder) %>
 			</div>
 			<% end %>
-			
-			<div class="share">
-				<%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name %>
-			</div>
 			<div class="rename">
 				<%= link_to "Rename", rename_folder_path(folder) %>
 			</div>
 			<div class="delete">
 				<%= link_to "Delete", folder, :confirm => 'Are you sure to delete the folder and all of its contents?', :method => :delete %>
+			</div>
+			<div class="share">
+				<%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name %>
 			</div>
 		</div>
 		
