@@ -1,0 +1,5 @@
+$("#invitation_form").dialog("close");
+$("#flash_notice").remove();
+$("#container").prepend("<div id=\"flash_notice\">Successfully unshared shared folder</div>");
+$("#folder_<%= params[:folder_id] %>").removeClass("shared_folder");
+$("#folder_<%= params[:folder_id] %>").addClass("folder");

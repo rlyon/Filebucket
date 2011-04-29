@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 	def index
 		if user_signed_in?
+		  @being_shared_folders = current_user.shared_folders_by_others
 			@folders = current_user.folders.roots
 			@assets = current_user.assets.where("folder_id is NULL").order("uploaded_file_file_name desc")
 		end
@@ -11,7 +12,7 @@ class HomeController < ApplicationController
 		@current_folder = current_user.folders.find(params[:folder_id])
 
 		if @current_folder
-
+      @being_shared_folders = []
 			#getting the folders which are inside this @current_folder
 			@folders = @current_folder.children
 
@@ -26,7 +27,7 @@ class HomeController < ApplicationController
 	end
   
   #this handles ajax request for inviting others to share folders
-  def share    
+  def share  
   	#first, we need to separate the emails with the comma
   	email_addresses = params[:email_addresses].split(",")
 
@@ -52,5 +53,14 @@ class HomeController < ApplicationController
   	  format.js {
   	  }
   	end
+  end
+  
+  def unshare
+    @current_folder = current_user.folders.find(params[:folder_id])
+    SharedFolder.delete_all(["folder_id = ?",@current_folder.id])
+    respond_to do |format|
+      format.js {
+      }
+    end
   end
 end

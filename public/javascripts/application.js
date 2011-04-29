@@ -16,7 +16,7 @@ $( function () {
 
 		//the dialog box customization
 		$( "#invitation_form" ).dialog({
-			height: 300,
+			height: 400,
 			width: 600,
 			modal: true,
 			buttons: {
@@ -28,6 +28,12 @@ $( function () {
 					//serialize the form data and post it the url with ajax
 					$.post(post_url,$("#invitation_form form").serialize(), null, "script");
 
+					return false;
+				},
+				"Unshare": function() {
+					//var post_url = $("#invitation_form form").attr("action");
+					var post_url = "/home/unshare"
+					$.post(post_url,$("#invitation_form form").serialize(), null, "script");
 					return false;
 				},
 				//Second button
@@ -43,4 +49,5 @@ $( function () {
 		return false;
 	});
 });
+
 

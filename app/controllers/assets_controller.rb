@@ -1,5 +1,5 @@
 class AssetsController < ApplicationController
-	before_filter :authenticate_user!
+	before_filter :authenticate_user!, :except => ['get']
 	def index
 		@assets = current_user.assets
 	end
@@ -60,7 +60,16 @@ class AssetsController < ApplicationController
 	end
 
 	def get
-		asset = current_user.assets.find(params[:id])
+	  if current_user
+	    # Get file if the current user owns it
+		  asset = current_user.assets.find(params[:id])
+		  # Or get the file if it is public
+		  asset ||= Asset.public_find_by_id(params[:id])
+		  # Or get the file if it is shared with the current user
+		else
+		  asset = Asset.public_find_by_id(params[:id])
+		end
+		
 		if asset
 			send_file asset.uploaded_file.path, :type => asset.uploaded_file_content_type
 		else

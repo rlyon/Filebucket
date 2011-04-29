@@ -16,10 +16,11 @@
 			<%= link_to "Upload File", new_asset_path %>
 		</li>
 		<% end %>
-		<% end %>
+		<% else %>
 		<li>
 			<%= link_to "Public Folders", folders_path %>
 		</li>
+		<% end %>
 		<li>
 			<%= link_to "Help", "#" %>
 		</li>

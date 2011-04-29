@@ -23,7 +23,7 @@ class Folder < ActiveRecord::Base
   end
   
   def shared?
-  	!self.shared_assets.empty?
+  	!self.shared_folders.empty?
   end
 
 end

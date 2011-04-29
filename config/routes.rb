@@ -17,6 +17,7 @@ Filebox::Application.routes.draw do
   match "browse/:folder_id/rename" => "folders#edit", :as => "rename_folder"
   
   match "home/share" => "home#share"
+  match "home/unshare" => "home#unshare"
   # match "share/:folder_id" => "shared_folders#new", :as => "share_folder"
   
   match "publicize/:folder_id" => "folders#publicize", :as => "publicize"
