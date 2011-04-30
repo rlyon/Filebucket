@@ -1,8 +1,8 @@
 body {
-	background-color: #338DCF;
+	background-color: #fff;
 	font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif;
 	font-size: 14px;
-	color: #fff;
+	color: #338DCF;
 	margin: 0;
 }
 a img {
@@ -24,6 +24,8 @@ a {
 	color: #000;
 	padding: 20px 40px;
 	border: solid 1px #BFBFBF;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
 }
 #flash_notice, #flash_error, #flash_alert {
 	padding: 5px 8px;
@@ -72,7 +74,7 @@ a {
 	padding:20px 0;
 }
 .logo a {
-	color: #fff;
+	color: #338DCF;
 	float: left;
 	font-size: 48px;
 	font-weight: bold;
@@ -83,7 +85,7 @@ a {
 	float:right;
 }
 #login_user_status a {
-	color: #fff;
+	color: #338DCF;
 	text-decoration: none;
 }
 #login_user_status a:hover {
@@ -165,28 +167,28 @@ a {
 	background:url("../images/file.png") no-repeat scroll left center transparent;
 }
 .file.asset_details:hover {
-	background:url("../images/file.png") no-repeat scroll left center #EFEFEF;
+	background:url("../images/file.png") no-repeat scroll left center #DFF1FF;
 }
 
 .folder {
 	background:url("../images/folder.png") no-repeat scroll left center transparent;
 }
 .folder.asset_details:hover {
-	background:url("../images/folder.png") no-repeat scroll left center #EFEFEF;
+	background:url("../images/folder.png") no-repeat scroll left center #DFF1FF;
 }
 
 .folder_documents {
 	background:url("../images/folder_documents.png") no-repeat scroll left center transparent;
 }
 .folder_documents.asset_details:hover {
-	background:url("../images/folder_documents.png") no-repeat scroll left #EFEFEF
+	background:url("../images/folder_documents.png") no-repeat scroll left #DFF1FF;
 }
 
 .shared_folder {
 	background:url("../images/folder_shared.png") no-repeat scroll left center transparent;
 }
 .shared_folder.asset_details:hover {
-	background:url("../images/folder_shared.png") no-repeat scroll left center #EFEFEF;
+	background:url("../images/folder_shared.png") no-repeat scroll left center #DFF1FF;
 }
 
 .folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover, .folder_documents.asset_details:hover {
