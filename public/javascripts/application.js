@@ -10,6 +10,9 @@ $( function () {
 
 		//a hack to display the different folder names correctly
 		$("#ui-dialog-title-invitation_form").text("Share '" + $(a).attr("folder_name") + "' with others");
+		
+		// Display current shared email addresses
+		$("#email_addresses").val($(a).attr("folder_emails"))
 
 		//then put the folder_id of the Share link into the hidden field "folder_id" of the invite form
 		$("#folder_id").val($(a).attr("folder_id"));
@@ -30,13 +33,14 @@ $( function () {
 
 					return false;
 				},
+				//Second button
 				"Unshare": function() {
 					//var post_url = $("#invitation_form form").attr("action");
 					var post_url = "/home/unshare"
 					$.post(post_url,$("#invitation_form form").serialize(), null, "script");
 					return false;
 				},
-				//Second button
+				//Third button
 				Cancel: function() {
 					$( this ).dialog( "close" );
 				}

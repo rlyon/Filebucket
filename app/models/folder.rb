@@ -25,5 +25,14 @@ class Folder < ActiveRecord::Base
   def shared?
   	!self.shared_folders.empty?
   end
+  
+  def to_shared_emails
+    #shared_to = SharedFolder.select("shared_email").find(:all, :conditions => ["folder_id = ?",id])
+    email_addresses = Array.new
+    shared_folders.each do |folder|
+      email_addresses.push(folder.shared_email)
+    end
+    email_addresses
+  end
 
 end

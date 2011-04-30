@@ -72,7 +72,7 @@
 				<%= link_to "Delete", folder, :confirm => 'Are you sure to delete the folder and all of its contents?', :method => :delete unless @is_this_folder_being_shared %>
 			</div>
 			<div class="share">
-				<%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name unless @is_this_folder_being_shared %>
+				<%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name, :folder_emails => folder.to_shared_emails.join(',') unless @is_this_folder_being_shared %>
 			</div>
 		</div>
 	</div>

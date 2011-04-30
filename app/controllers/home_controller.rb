@@ -40,9 +40,17 @@ class HomeController < ApplicationController
   #this handles ajax request for inviting others to share folders
   def share  
   	#first, we need to separate the emails with the comma
-  	email_addresses = params[:email_addresses].split(",")
-
-  	email_addresses.each do |email_address|
+  	@email_addresses = params[:email_addresses].split(",")
+  	
+  	current_folder = Folder.find(params[:folder_id])
+  	all_email_addresses = current_folder.to_shared_emails
+  	removed_email_addresses = all_email_addresses - @email_addresses
+  	new_email_addresses = @email_addresses - all_email_addresses
+  	
+  	logger.debug new_email_addresses
+  	logger.debug removed_email_addresses
+  	
+  	new_email_addresses.each do |email_address|
   	  #save the details in the ShareFolder table
   	  @shared_folder = current_user.shared_folders.new
   	  @shared_folder.folder_id = params[:folder_id]
@@ -57,6 +65,10 @@ class HomeController < ApplicationController
   	  @shared_folder.save
 
   	  #now we need to send email to the Shared User
+  	end
+  	
+  	removed_email_addresses.each do |email_address|
+  	  SharedFolder.delete_all(["folder_id = ? AND shared_email = ?",params[:folder_id],email_address])
   	end
 
   	#since this action is mainly for ajax (javascript request), we'll respond with js file back (refer to share.js.erb)

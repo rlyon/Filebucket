@@ -9,4 +9,5 @@ class SharedFolder < ActiveRecord::Base
   
   #for the folder being shared
   belongs_to :folder
+  
 end
