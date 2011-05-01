@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 	attr_accessible :name
 
 	validates :email, :presence => true, :uniqueness => true
+	validates :username, :presence => true, :uniqueness => true
 	 
   after_create :check_and_assign_shared_ids_to_shared_folders
 
@@ -25,6 +26,10 @@ class User < ActiveRecord::Base
         shared_folder.shared_user_id = self.id
         shared_folder.save
       end
+      # if the account has shared folders they were invited, so they
+      # don't need administrative activation.
+      self.account_active = 1
+      self.save
     end    
   end
   

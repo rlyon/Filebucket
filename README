@@ -1,15 +1,15 @@
 Add both shared aging and file aging (shared aging will be the most important)
 Add multiple file upload
-username to users
+* username to users
 directories to seperate users in assets
 update button
 * downloaded_times to assets (use to sort public folders)
 
 Confirmation for sign up unless the request came from share form
-Administrative confirmation unless request came from share form.  referal field for user.
+* Administrative confirmation unless request came from share form.
 
 Password validation.  needs to be at least 10 characters non dictionary and alphanum
-Share to public button
+* Share to public button
 
 Future... index file after upload.
 Future... s3 interface
