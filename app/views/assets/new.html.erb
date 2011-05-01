@@ -2,10 +2,8 @@
 <script type="text/javascript" charset="utf-8">
 	$( function () {
 		$('.upload').fileUploadUI({
-			uploadTable: $('.upload_files'),
-			downloadTable: $('.download_files'),
-
-			$buildUploadRow: function (files, index) {
+			uploadTable: $('#files'),
+			buildUploadRow: function (files, index) {
 				var file = files[index];
 				return $('<tr><td>' + file.name + '<\/td>' +
 				'<td class="file_upload_progress"><div><\/div><\/td>' +
