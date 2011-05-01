@@ -1,7 +1,7 @@
 directories to seperate users in assets
 update button
 Invite button
-Confirmation for sign up unless the request came from share form or invite
+Activation for sign up unless the request came from share form or invite
 Password validation.  needs to be at least 10 characters non dictionary and alphanum
 
 * Add multiple file upload
