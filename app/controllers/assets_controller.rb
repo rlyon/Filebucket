@@ -18,12 +18,13 @@ class AssetsController < ApplicationController
 
 	def create
 		@asset = current_user.assets.build(params[:asset])
-    if @asset.folder
-      @asset.folder.updated_at = @asset.updated_at
-      @asset.folder.save
-    end
+    
     respond_to do |format|
   		if @asset.save
+  		  if @asset.folder
+          @asset.folder.updated_at = @asset.updated_at
+          @asset.folder.save
+        end
   			#flash[:notice] = "Successfully created asset."
   			format.json { render :json => {:name => truncate_helper(@asset.file_name, :length => 50), :result => 'success', :msg => 'OK'}, :content_type => 'text/html' }
   			format.xml  { render :xml => @asset, :status => :created, :location => @asset }

@@ -19,23 +19,6 @@
 </div>
 <div class="asset_list">
 
-	<!-- Listing Shared Folders (the folders shared by others) -->
-	<% @being_shared_folders.each do |folder| %>
-	<div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
-		<div class="file_name">
-			<%= link_to folder.name, browse_path(folder) %>
-		</div>
-		<div class="file_size">
-			-
-		</div>
-		<div class="file_last_updated">
-			-
-		</div>
-		<div class="actions">
-		</div>
-	</div>
-	<% end %>
-
 	<!-- Listing Folders -->
 	<% @folders.each do |folder| %>
 	<div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
@@ -77,7 +60,7 @@
 		</div>
 	</div>
 	<% end %>
-
+	
 	<% @assets.each do |asset| %>
 	<div class="asset_details file">
 		<div class="file_name">
@@ -99,6 +82,31 @@
 		</div>
 	</div>
 	<% end %>
+
+	<% unless @is_this_folder_being_shared or ! @current_folder.nil? %>
+	<br />
+	<br />
+	<b>Shared Folders:</b>
+	<!-- Listing Shared Folders (the folders shared by others) -->
+	<% @being_shared_folders.each do |folder| %>
+	<div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
+		<div class="file_name">
+			<%= link_to folder.name, browse_path(folder) %>
+			-
+			<i>(<%= folder.user.name %>)</i>
+		</div>
+		<div class="file_size">
+			-
+		</div>
+		<div class="file_last_updated">
+			-
+		</div>
+		<div class="actions">
+		</div>
+	</div>
+	<% end %>
+	<% end %>
+
 </div> <!-- Asset list -->
 <div id="invitation_form" title="Invite others to share" style="display:none">
 	<%= form_tag '/home/share' do %>
