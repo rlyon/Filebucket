@@ -1,8 +1,8 @@
 directories to seperate users in assets
-update button
 Invite button
 Activation for sign up unless the request came from share form or invite
 Password validation.  needs to be at least 10 characters non dictionary and alphanum
+Email on signup and confirmation
 
 * Add multiple file upload
 * Administrative confirmation unless request came from share form.
@@ -10,9 +10,11 @@ Password validation.  needs to be at least 10 characters non dictionary and alph
 * downloaded_times to assets (use to sort public folders - but not yet)
 * username to users
 
-Near Future... Administration console
+Near Future... 
+	- Administration console
 	- Recently uploaded files
-	- Users
+	- Users roles
+	- update button 
 
 Future... Add both shared aging and file aging (shared aging will be the most important)
 Future... index file after upload.
