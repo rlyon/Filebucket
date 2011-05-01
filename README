@@ -1,16 +1,20 @@
-Add both shared aging and file aging (shared aging will be the most important)
 Add multiple file upload
-* username to users
 directories to seperate users in assets
 update button
-* downloaded_times to assets (use to sort public folders)
-
-Confirmation for sign up unless the request came from share form
-* Administrative confirmation unless request came from share form.
-
+Invite button
+Confirmation for sign up unless the request came from share form or invite
 Password validation.  needs to be at least 10 characters non dictionary and alphanum
-* Share to public button
 
+* Administrative confirmation unless request came from share form.
+* Share to public button
+* downloaded_times to assets (use to sort public folders - but not yet)
+* username to users
+
+Near Future... Administration console
+	- Recently uploaded files
+	- Users
+
+Future... Add both shared aging and file aging (shared aging will be the most important)
 Future... index file after upload.
 Future... s3 interface
 Future... curl based file upload/download
@@ -19,9 +23,6 @@ Future... move files
 Future... add logs to assets.  users can subscribe to logs to see what is happening to the asset 
 Future... search public
 
-Near Future... Administration console
-	- Recently uploaded files
-	- Users
 
 
 When a folder is made public, it is only read only, shared users still maintain access privilages and can set to private.

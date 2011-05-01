@@ -1,7 +1,30 @@
-<% title "Upload a file" %>
-<%= render :partial => "home/breadcrumbs" %>
+<%= javascript_include_tag 'jquery.fileupload', 'jquery.fileupload-ui' %>
+<script type="text/javascript" charset="utf-8">
+	$( function () {
+		$('.upload').fileUploadUI({
+			uploadTable: $('.upload_files'),
+			downloadTable: $('.download_files'),
 
-<%= render 'form' %>
+			$buildUploadRow: function (files, index) {
+				var file = files[index];
+				return $('<tr><td>' + file.name + '<\/td>' +
+				'<td class="file_upload_progress"><div><\/div><\/td>' +
+				'<td class="file_upload_cancel">' +
+				'<button class="ui-state-default ui-corner-all" title="Cancel">' +
+				'<span class="ui-icon ui-icon-cancel">Cancel<\/span>' +
+				'<\/button><\/td><\/tr>');
+			},
+			buildDownloadRow: function (file) {
+				return $('<tr><td>' + file.name + '<\/td><\/tr>');
+			},
+			sequentialUploads: true
+		});
+	});
+</script>
+<% title "Upload files" %>
+<%= render :partial => "home/breadcrumbs" %>
+<%= render "form" %>
+
 
 <p>
 	<% if @asset.folder %>

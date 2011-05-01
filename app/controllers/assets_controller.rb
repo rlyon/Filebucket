@@ -23,12 +23,11 @@ class AssetsController < ApplicationController
 			if @asset.folder
 				@asset.folder.updated_at = @asset.updated_at
 				@asset.folder.save
-				redirect_to browse_path(@asset.folder)
-			else
-				redirect_to root_url
 			end
+			render :json => { :name => @asset.file_name }, :content_type => 'text/html'
 		else
-			render :action => 'new'
+			#render :action => 'new'
+			render :json => { :result => 'error'}, :content_type => 'text/html'
 		end
 	end
 

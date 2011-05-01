@@ -20,7 +20,7 @@ $( function () {
 		//the dialog box customization
 		$( "#invitation_form" ).dialog({
 			height: 400,
-			width: 600,
+			width: 515,
 			modal: true,
 			buttons: {
 				//First button

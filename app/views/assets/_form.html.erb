@@ -1,12 +1,15 @@
-<%= form_for @asset, :html => {:multipart => true} do |f| %>
-<%= f.error_messages %>
-<p>
-	<%= f.label :uploaded_file, "Choose a file to upload:" %>
-	<br /><br />
-	<%= f.file_field :uploaded_file %>
-</p>
-<%= f.hidden_field :folder_id %>
-<p>
-	<%= f.submit "Upload" %>
-</p>
-<% end %>
+<div class="files">
+	<p>
+		Click to select or drag-and-drop multiple files on the upload button:
+	</p>
+	<%= form_for @asset, :html => {:class => "upload", :multipart => true} do |f| %>
+		<%= f.hidden_field :folder_id %>
+		<%= f.file_field :uploaded_file %>
+		 
+		<button type="submit">Upload</button>
+		<div>Upload files</div>
+	<% end %>
+
+	<table class="upload_files"></table>
+	<table class="download_files"></table>
+</div>
