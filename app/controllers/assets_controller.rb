@@ -18,17 +18,23 @@ class AssetsController < ApplicationController
 
 	def create
 		@asset = current_user.assets.build(params[:asset])
-		if @asset.save
-			flash[:notice] = "Successfully created asset."
-			if @asset.folder
-				@asset.folder.updated_at = @asset.updated_at
-				@asset.folder.save
-			end
-			render :json => { :name => @asset.file_name }, :content_type => 'text/html'
-		else
-			#render :action => 'new'
-			render :json => { :result => 'error'}, :content_type => 'text/html'
-		end
+    if @asset.folder
+      @asset.folder.updated_at = @asset.updated_at
+      @asset.folder.save
+    end
+    respond_to do |format|
+  		if @asset.save
+  			#flash[:notice] = "Successfully created asset."
+  			format.json { render :json => {:name => truncate_helper(@asset.file_name, :length => 50), :result => 'success', :msg => 'OK'}, :content_type => 'text/html' }
+  			format.xml  { render :xml => @asset, :status => :created, :location => @asset }
+  			format.html { redirect_to(root_url, :notice => "Successfully uploaded file(s).")}
+  		else
+  			#render :action => 'new'
+  			format.json { render :json => { :name => truncate_helper(@asset.file_name, :length => 50), :result => 'error', :msg => "Error: #{@asset.errors.full_messages.join(',')}"}, :content_type => 'text/html' }
+  			format.xml  { render :xml => @asset, :status => :created, :location => @asset }
+  			format.html { render :action => 'new' }
+  		end
+  	end
 	end
 
 	def edit
@@ -80,4 +86,10 @@ class AssetsController < ApplicationController
 			end
 		end
 	end
+	
+private
+  def truncate_helper(text, options = {})
+    options.reverse_merge!(:length => 30)
+    text.truncate(options.delete(:length), options) if text
+  end	
 end

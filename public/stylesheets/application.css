@@ -285,3 +285,11 @@ a {
 	font-size:12px;
 	color:#7F7F7F;
 }
+
+.file_upload_status_success {
+	color: green;
+}
+
+.file_upload_status_error {
+	color: red;
+}

@@ -3,6 +3,16 @@
 		Click to select or drag-and-drop multiple files on the upload button:
 	</p>
 	<%= form_for @asset, :html => {:class => "upload", :multipart => true} do |f| %>
+		<% if @asset.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@asset.errors.count, "error") %> prohibited this file from being saved:</h2>
+	      <ul>
+	      <% @asset.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
 		<%= f.hidden_field :folder_id %>
 		<%= f.file_field :uploaded_file %>
 		 

@@ -1,10 +1,10 @@
-Add multiple file upload
 directories to seperate users in assets
 update button
 Invite button
 Confirmation for sign up unless the request came from share form or invite
 Password validation.  needs to be at least 10 characters non dictionary and alphanum
 
+* Add multiple file upload
 * Administrative confirmation unless request came from share form.
 * Share to public button
 * downloaded_times to assets (use to sort public folders - but not yet)

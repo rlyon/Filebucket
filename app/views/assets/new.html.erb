@@ -13,15 +13,16 @@
 				'<\/button><\/td><\/tr>');
 			},
 			buildDownloadRow: function (file) {
-				return $('<tr><td>' + file.name + '<\/td><\/tr>');
+				return $('<tr><td>' + file.name + '<\/td>' +
+				'<td class="file_upload_status_' + file.result + '"><div>' + file.msg + '<\/div><\/td><\/tr>');
 			},
-			sequentialUploads: true
+			/* sequentialUploads: true */
 		});
 	});
 </script>
 <% title "Upload files" %>
 <%= render :partial => "home/breadcrumbs" %>
-<%= render "form" %>
+<%= render :partial => "form" %>
 
 
 <p>
