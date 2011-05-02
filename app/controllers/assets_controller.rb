@@ -68,15 +68,18 @@ class AssetsController < ApplicationController
 	def get
 	  if current_user
 	    # Get file if the current user owns it
-		  asset = current_user.assets.find(params[:id])
+		  asset = current_user.assets.find_by_id(params[:id])
 		  # Or get the file if it is public
 		  asset ||= Asset.public_find_by_id(params[:id])
-		  # Or get the file if it is shared with the current user
+		  # Or get the file if it is shared with the current user 
+		  asset ||= Asset.find(params[:id]) if current_user.has_share_access?(Asset.find_by_id(params[:id]).folder)
 		else
 		  asset = Asset.public_find_by_id(params[:id])
 		end
 		
 		if asset
+		  #data = open(URI.parse(URI.encode(asset.uploaded_file.path)).to_s)
+		  #send_data data, :filename => asset.uploaded_file_file_name
 			send_file asset.uploaded_file.path, :type => asset.uploaded_file_content_type
 		else
 			flash[:error] = "You can't access files that don't belong to you!"

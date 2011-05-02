@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
 	validates :username, :presence => true, :uniqueness => true
 	validates_format_of :username, :with => /[a-z]+/,
 	 :message => "can only contain lower case characters."
-	validates_format_of :password, :with => /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[^\da-zA-Z]).{8,128}$/,
-	 :message => "must contain at least 1 upper case character and one digit."
+	#validates_format_of :password, :with => /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[^\da-zA-Z]).{8,128}$/,
+	# :message => "must contain at least 1 upper case character and one digit."
 	 
   after_create :check_and_assign_shared_ids_to_shared_folders
 
