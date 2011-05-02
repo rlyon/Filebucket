@@ -8,26 +8,33 @@ class User < ActiveRecord::Base
 	# Include default devise modules. Others available are:
 	# :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :token_authenticatable, :confirmable, :lockable, :timeoutable
+         
 
 	# Setup accessible (or protected) attributes for your model
 	attr_accessible :email, :password, :password_confirmation, :remember_me
-	attr_accessible :name
+	attr_accessible :name, :username
 
 	validates :email, :presence => true, :uniqueness => true
 	validates :username, :presence => true, :uniqueness => true
+	validates_format_of :username, :with => /[a-z]+/,
+	 :message => "can only contain lower case characters."
+	validates_format_of :password, :with => /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[^\da-zA-Z]).{8,128}$/,
+	 :message => "must contain at least 1 upper case character and one digit."
 	 
   after_create :check_and_assign_shared_ids_to_shared_folders
 
   def check_and_assign_shared_ids_to_shared_folders
     shared_folders_with_same_email = SharedFolder.find_all_by_shared_email(self.email)
-    if shared_folders_with_same_email
+    if ! shared_folders_with_same_email.empty?
       shared_folders_with_same_email.each do |shared_folder|
         shared_folder.shared_user_id = self.id
         shared_folder.save
       end
       # if the account has shared folders they were invited, so they
       # don't need administrative activation.
+      logger.info "ACTIVATING ACCOUNT: #{email} has shared folders"
       self.account_active = 1
       self.save
     end    
