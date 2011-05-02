@@ -14,7 +14,8 @@ Near Future...
 	- Administration console
 	- Recently uploaded files
 	- Users roles
-	- update button 
+	- update button
+  - full acl control for folders
 
 Future... non dictionary for password validation
 Future... Add both shared aging and file aging (shared aging will be the most important)

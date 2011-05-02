@@ -1,3 +1,9 @@
+
+
+# Added because Psych does not parse activerecord interpolations correcly
+# require 'yaml'
+# YAML::ENGINE.yamler = 'syck'
+
 require 'rubygems'
 
 # Set up gems listed in the Gemfile.
