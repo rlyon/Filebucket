@@ -1,0 +1,8 @@
+<%= render :partial => "shared/breadcrumbs" %>
+<%= render :partial => "shared/list_header" %>
+
+<div class="asset_list">
+	<% @public_folders.each do |public_folder| %>
+		<%= render :partial => "shared/folder_details", :locals => { :folder => public_folder.folder, :decend => public_folder_path } %>
+	<% end %>
+</div>

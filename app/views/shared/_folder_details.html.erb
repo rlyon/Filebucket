@@ -1,0 +1,33 @@
+<div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
+	<div class="file_name">
+		<%= link_to truncate(folder.name, :length => 50), descend %>
+	</div>
+	<div class="file_size">
+		<%= pluralize(folder.number_of_files, 'File') %>
+	</div>
+	<div class="file_last_updated">
+		<%= folder.last_updated %>
+	</div>
+	<% if !@public_folders %>
+	<div class="actions">
+		<% if folder.parent.nil? and folder.public? %>
+		<div class="public">
+			<%= link_to "Set Private", publicize_path(folder) unless @is_this_folder_being_shared %>
+		</div>
+		<% elsif folder.parent.nil? %>
+		<div class="private">
+			<%= link_to "Set Public", publicize_path(folder) unless @is_this_folder_being_shared %>
+		</div>
+		<% end %>
+		<div class="rename">
+			<%= link_to "Rename", rename_folder_path(folder) unless @is_this_folder_being_shared %>
+		</div>
+		<div class="delete">
+			<%= link_to "Delete", folder, :confirm => 'Are you sure to delete the folder and all of its contents?', :method => :delete unless @is_this_folder_being_shared %>
+		</div>
+		<div class="share">
+			<%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name, :folder_emails => folder.to_shared_emails.join(',') unless @is_this_folder_being_shared %>
+		</div>
+	</div>
+	<% end %>
+</div>
