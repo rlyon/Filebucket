@@ -3,6 +3,7 @@ class Folder < ActiveRecord::Base
 	belongs_to :user
 	has_many :assets, :dependent => :destroy
 	has_many :shared_folders, :dependent => :destroy
+	has_many :public_folders, :dependent => :destroy
 	
 	attr_accessible :name, :parent_id, :user_id
 	
@@ -13,10 +14,6 @@ class Folder < ActiveRecord::Base
 	def number_of_files
 		assets.length
 	end
-	
-  def is_public?
-  	public
-  end
   
   def is_root?
   	root == id
@@ -24,6 +21,22 @@ class Folder < ActiveRecord::Base
   
   def shared?
   	!self.shared_folders.empty?
+  end
+  
+  def public?
+    !self.public_folders.empty?
+  end
+  
+  def private?
+    self.public_folders.empty?
+  end
+  
+  def root_public?
+    self.root.public?
+  end
+  
+  def root_private?
+    self.root.private?
   end
   
   def to_shared_emails

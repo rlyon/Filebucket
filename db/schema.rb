@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110501064204) do
+ActiveRecord::Schema.define(:version => 20110503173433) do
 
   create_table "assets", :force => true do |t|
     t.integer  "user_id"
@@ -33,11 +33,20 @@ ActiveRecord::Schema.define(:version => 20110501064204) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "public",     :default => false
   end
 
   add_index "folders", ["parent_id"], :name => "index_folders_on_parent_id"
   add_index "folders", ["user_id"], :name => "index_folders_on_user_id"
+
+  create_table "public_folders", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "folder_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "public_folders", ["folder_id"], :name => "index_public_folders_on_folder_id"
+  add_index "public_folders", ["user_id"], :name => "index_public_folders_on_user_id"
 
   create_table "shared_folders", :force => true do |t|
     t.integer  "user_id"
