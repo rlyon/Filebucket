@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "nosignsoflifehere@gmail.com"
+  default :from => "ibesthelp@uidaho.edu"
   
   def invitation_to_share(shared_folder)
     @shared_folder = shared_folder #setting up an instance variable to be used in the email template
