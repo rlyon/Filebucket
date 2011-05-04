@@ -3,13 +3,16 @@ class PublicFoldersController < ApplicationController
   
   def index
     @public_folders = PublicFolder.find(:all)
+    @public_view = true 
   end
   
   def show
-    current_folder = Folder.find_by_id(params[:id])
-    if current_folder.root_public?
-      @folders = current_folder.children
-      @assets = current_folder.assets.order("uploaded_file_file_name desc")
+    @current_folder = Folder.find(params[:id])
+    raise NotFoundError
+    if @current_folder.root_public?
+      @folders = @current_folder.children
+      @assets = @current_folder.assets.order("uploaded_file_file_name desc")
+      @public_view = true 
     else
       flash[:error] = "This folder is not public."
       redirect_to root_url
@@ -39,7 +42,7 @@ class PublicFoldersController < ApplicationController
     end
     
     if folder.parent
-      redirect_to browse_path(folder.parent)
+      redirect_to folders_path(folder.parent)
     else
       redirect_to root_url
     end

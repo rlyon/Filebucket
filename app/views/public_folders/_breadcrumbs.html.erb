@@ -1,0 +1,11 @@
+<div class="breadcrumbs">
+	<% if @current_folder %>
+	<%= link_to "Public Home", public_folders_path %>
+	<% @current_folder.ancestors.reverse.each do |folder| %>
+	» <%= link_to folder.name, public_folder_path(folder) %>
+	<% end %>
+	»  <%= @current_folder.name %>
+	<% else %>
+	Home Directory
+	<% end %>
+</div>

@@ -30,7 +30,7 @@ class Asset < ActiveRecord::Base
 	
 	def self.public_find_by_id(id)
 	  file = find(id)
-	  if file.folder.is_public?
+	  if file.folder.public?
 	    return file
 	  end
 	  nil

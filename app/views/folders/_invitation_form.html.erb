@@ -1,5 +1,5 @@
 <div id="invitation_form" title="Invite others to share" style="display:none">
-	<%= form_tag '/home/share' do %>
+	<%= form_tag '/folders/share' do %>
 	<label for="email_addresses">
 		Enter recipient email addresses here
 		<br />
@@ -15,15 +15,5 @@
 	<br />
 	<%= text_area_tag 'message',"",  :class => 'text ui-widget-content ui-corner-all'%>
 	<%= hidden_field_tag "folder_id" %>
-	<% end %>
-</div>
-<div id="upload_form" title="Upload file" style="display:none">
-	<%= form_tag '/asset/new', :html => {:multipart => true} do %>
-	<label for="uploaded_file">
-		Select file for upload
-		<br />
-		<%= file_field_tag 'uploaded_file' %>
-  </label>
-	<%= hidden_field_tag 'folder_id' %>
 	<% end %>
 </div>

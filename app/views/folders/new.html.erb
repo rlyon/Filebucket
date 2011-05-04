@@ -4,7 +4,7 @@
 
 <p>
 	<% if @folder.parent %>
-	<%= link_to "Back to #{@folder.parent.name} folder", browse_path(@folder.parent) %>
+	<%= link_to "Back to #{@folder.parent.name} folder", folders_path(@folder.parent) %>
 </p>
 <% else %>
 <%= link_to "Back to Home page", root_url %>

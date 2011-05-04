@@ -36,7 +36,7 @@ $( function () {
 				//Second button
 				"Unshare": function() {
 					//var post_url = $("#invitation_form form").attr("action");
-					var post_url = "/home/unshare"
+					var post_url = "/folders/unshare"
 					$.post(post_url,$("#invitation_form form").serialize(), null, "script");
 					return false;
 				},

@@ -1,7 +1,7 @@
 body {
 	background-color: #fff;
 	font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif;
-	font-size: 14px;
+	font-size: 12px;
 	color: #338DCF;
 	margin: 0;
 }
@@ -50,13 +50,13 @@ a {
 	padding-bottom: 12px;
 	margin-bottom: 20px;
 	background-color: #f0f0f0;
-	font-size: 12px;
+	//font-size: 12px;
 }
 .error_messages h2 {
 	text-align: left;
 	font-weight: bold;
 	padding: 5px 10px;
-	font-size: 12px;
+	//font-size: 12px;
 	margin: 0;
 	background-color: #c00;
 	color: #fff;
@@ -76,7 +76,7 @@ a {
 .logo a {
 	color: #338DCF;
 	float: left;
-	font-size: 48px;
+	font-size: 40px;
 	font-weight: bold;
 	text-shadow: 2px 2px 2px #000;
 	text-decoration:none;
@@ -94,7 +94,7 @@ a {
 
 .asset_list_header, .asset_list, .asset_details {
 	font-weight:bold;
-	font-size:12px;
+	//font-size:12px;
 	overflow:hidden;
 } 
 
@@ -116,6 +116,10 @@ a {
 	float:left;
 }
 
+.file_name_header, .file_size_header, .file_last_updated_header, .file_owner_header {
+	color: #ccc;
+}
+
 .asset_list {
 	padding:20px 0;
 }
@@ -129,7 +133,7 @@ a {
 .asset_details a, .asset_details a:visited {
 	text-decoration:none;
 	color:#1D96EF;
-	font-size:12px;
+	//font-size:12px;
 }
 
 #menu {
@@ -198,6 +202,7 @@ a {
 .breadcrumbs {
 	margin:10px 0;
 	font-weight:bold;
+	color: #AAA;
 }
 .breadcrumbs a {
 	color:#1D96EF;
@@ -213,7 +218,7 @@ a {
 }
 .asset_details .share a, .asset_details .share_edit a, .asset_details .rename a, .asset_details .download a, .asset_details .delete a, .public a, .private a {
 	border: 1px solid #CFE9FF;
-	font-size: 11px;
+	//font-size: 11px;
 	margin-left: 5px;
 	padding: 0 2px;
 }
@@ -252,7 +257,7 @@ a {
 }
 
 .ui-button-text-only .ui-button-text {
-	font-size: 14px ;
+	//font-size: 14px ;
 	padding: 3px 10px !important;
 }
 .share .ui-button-text-only .ui-button-text {
@@ -263,12 +268,12 @@ a {
 
 .share_edit .ui-button-text-only .ui-button-text {
 	padding: 0 2px !important;
-	font-size:11px;
+	//font-size:11px;
 	font-weight:normal;
 }
 
 #invitation_form{
-	font-size:14px;
+	//font-size:14px;
 }
 #invitation_form label{
 	font-weight:bold;
@@ -276,13 +281,13 @@ a {
 #invitation_form input.text {
 	width:480px;
 	height:20px;
-	font-size:12px;
+	//font-size:12px;
 	color:#7F7F7F;	
 }
 #invitation_form textarea {
 	width:480px;
 	height:100px;
-	font-size:12px;
+	//font-size:12px;
 	color:#7F7F7F;
 }
 
@@ -292,4 +297,9 @@ a {
 
 .file_upload_status_error {
 	color: red;
+}
+
+.empty {
+	color: #AAA;
+	margin-left: 20px;
 }

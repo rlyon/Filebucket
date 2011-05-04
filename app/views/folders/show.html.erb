@@ -2,18 +2,20 @@
 
 <div class="asset_list">
 	<b>Folders:</b>
-	<% if !@folders.nil? and @folders.empty? %>
-	  <p class="empty"><i>None</i></p>
+	<% if @folders.empty? %>
+	  <p class="empty"><i>Empty</i></p>
 	<% else %>
 	<%= render :partial => "shared/list_header" %>
 	<% @folders.each do |folder| %>
-		<%= render :partial => "shared/folder_details", :locals => { :folder => folder, :descend => public_folder_path(folder) } %>
+		<%= render :partial => "shared/folder_details", :locals => { :folder => folder, :descend => folder_path(folder) } %>
 	<% end %>
 	<% end %>
-  
+	
+	<br />
+	<br />
 	<b>Files:</b>
-	<% if @assets.empty? %>
-	  <p class="empty"><i>None</i></p>
+	<% if @folders.empty? %>
+	  <p class="empty"><i>Empty</i></p>
 	<% else %>
 	<%= render :partial => "shared/list_header" %>
 	<% @assets.each do |asset| %>

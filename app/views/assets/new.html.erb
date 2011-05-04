@@ -16,18 +16,23 @@
 				return $('<tr><td>' + file.name + '<\/td>' +
 				'<td class="file_upload_status_' + file.result + '"><div>' + file.msg + '<\/div><\/td><\/tr>');
 			},
-			/* sequentialUploads: true */
+			// sequentialUploads: true
 		});
 	});
 </script>
 <% title "Upload files" %>
-<%= render :partial => "home/breadcrumbs" %>
+<%= render :partial => "folders/breadcrumbs" %>
 <%= render :partial => "form" %>
 
+<span style="color: #ff0000;"><p><pre><b>Important Restrictions: </b>
+	For the best experience use Google Chrome&trade; or Safari&trade;<br />
+	Currently multiple file uploads and drag-and-drop only work with
+	Chrome, Firefox 4, and Safari.  Firefox 3 can perform single file 
+	uploads and Internet Explorer does not work at all.</pre></p></span>
 
 <p>
 	<% if @asset.folder %>
-	<%= link_to "Back to '#{@asset.folder.name}' Folder", browse_path(@asset.folder) %>
+	<%= link_to "Back to '#{@asset.folder.name}' Folder", folders_path(@asset.folder) %>
 	<% else %>
 	<%= link_to "Back", root_url %>
 	<% end %>

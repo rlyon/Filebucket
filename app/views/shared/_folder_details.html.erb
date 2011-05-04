@@ -2,13 +2,20 @@
 	<div class="file_name">
 		<%= link_to truncate(folder.name, :length => 50), descend %>
 	</div>
+	
+	<% if @public_view %>
+	<div class="file_owner">
+		<%= folder.user.name %>
+	</div>
+	<% end %>
+	
 	<div class="file_size">
 		<%= pluralize(folder.number_of_files, 'File') %>
 	</div>
 	<div class="file_last_updated">
 		<%= folder.last_updated %>
 	</div>
-	<% if !@public_folders %>
+	<% if !@public_view %>
 	<div class="actions">
 		<% if folder.parent.nil? and folder.public? %>
 		<div class="public">
@@ -20,7 +27,7 @@
 		</div>
 		<% end %>
 		<div class="rename">
-			<%= link_to "Rename", rename_folder_path(folder) unless @is_this_folder_being_shared %>
+			<%= link_to "Rename", edit_folder_path(folder) unless @is_this_folder_being_shared %>
 		</div>
 		<div class="delete">
 			<%= link_to "Delete", folder, :confirm => 'Are you sure to delete the folder and all of its contents?', :method => :delete unless @is_this_folder_being_shared %>

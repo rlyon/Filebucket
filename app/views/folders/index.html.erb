@@ -1,71 +1,58 @@
-<%= render :partial => "folders/breadcrumbs" %>
+<% unless user_signed_in? %>
+<h1>Welcome to the IBEST FileBox</h1>
+<p>
+	File sharing web application you can't ignore.
+</p>
+<% else %>
+<%= render :partial => "breadcrumbs" %>
 
-<div class="asset_list_header">
-	<div class="file_name_header">
-		File Name
-	</div>
-	<div class="file_owner_header">
-		Owner
-	</div>
-	<div class="file_size_header">
-		Size
-	</div>
-	<div class="file_last_updated_header">
-		Modified
-	</div>
-</div>
+<div class="asset_list">
 
-<% @folders.each do |folder| %>
-	<% if folder.is_public? %>
-	<% if folder.children.empty? and folder.assets.empty? %>
-	<div class="asset_details folder">
+	<b>Folders:</b>
+	<% if @folders.empty? %>
+	  <p class="empty"><i>None</i></p>
 	<% else %>
-	<div class="asset_details folder_documents">
+	<%= render :partial => "shared/list_header" %>
+	<% @folders.each do |folder| %>
+		<%= render :partial => "shared/folder_details", :locals => { :folder => folder, :descend => folder_path(folder) } %>
 	<% end %>
-			
+	<% end %>
+	
+	<br />
+	<br />
+	<b>Files:</b>
+	<% if @assets.empty? %>
+	  <p class="empty"><i>None</i></p>
+	<% else %>
+	<%= render :partial => "shared/list_header" %>
+	<% @assets.each do |asset| %>
+		<%= render :partial => "shared/asset_details", :locals => { :asset => asset } %>
+	<% end %>
+	<% end %>
+
+	<% unless @is_this_folder_being_shared or ! @current_folder.nil? %>
+	<br />
+	<br />
+	<b>Shared Folders:</b>
+	<!-- Listing Shared Folders (the folders shared by others) -->
+	<% @being_shared_folders.each do |folder| %>
+	<div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
 		<div class="file_name">
-			<%= link_to truncate(folder.name, :length => 50), public_path(folder) %>
+			<%= link_to folder.name, folder_path(folder) %>
+			-
+			<i>(<%= folder.user.name %>)</i>
 		</div>
-		
-		<div class="file_owner">
-			<%= folder.user.name %>
-		</div>
-		
 		<div class="file_size">
-			<%= pluralize(folder.number_of_files, 'File') %>
 		</div>
-		
 		<div class="file_last_updated">
-			<%= folder.last_updated %>
 		</div>
-	</div> 
+		<div class="actions">
+		</div>
+	</div>
 	<% end %>
-<% end %>
+	<% end %>
 
-
-<% @assets.each do |asset| %>
-<div class="asset_details file">
-	<div class="file_name">
-		<%= link_to truncate(asset.file_name, :length => 50), download_path(asset) %>
-	</div>
-	
-	<div class="file_owner">
-		<%= asset.user.name %>
-	</div>
-	
-	<div class="file_size">
-		<%= number_to_human_size(asset.file_size, :precision => 2) %>
-	</div>
-	
-	<div class="file_last_updated">
-		<%= asset.uploaded_file_updated_at %>
-	</div>
-	
-	<div class="actions">
-		<div class="download">
-			<%= link_to "Download", download_path(asset) %>
-		</div>
-	</div>
-</div>
+</div> <!-- Asset list -->
+<%= render :partial => "invitation_form" %>
 <% end %>
 

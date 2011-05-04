@@ -1,8 +1,12 @@
-<%= render :partial => "shared/breadcrumbs" %>
+<%= render :partial => "breadcrumbs" %>
 <%= render :partial => "shared/list_header" %>
 
 <div class="asset_list">
+	<% if !@folders.nil? and @folders.empty? %>
+	  <p class="empty"><i>None</i></p>
+	<% else %>
 	<% @public_folders.each do |public_folder| %>
-		<%= render :partial => "shared/folder_details", :locals => { :folder => public_folder.folder, :decend => public_folder_path } %>
+		<%= render :partial => "shared/folder_details", :locals => { :folder => public_folder.folder, :descend => public_folder_path(public_folder.folder) } %>
+	<% end %>
 	<% end %>
 </div>

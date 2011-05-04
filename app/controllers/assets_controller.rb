@@ -59,7 +59,7 @@ class AssetsController < ApplicationController
 
 		#redirect to a relevant path depending on the parent folder
 		if @parent_folder
-			redirect_to browse_path(@parent_folder)
+			redirect_to folders_path(@parent_folder)
 		else
 			redirect_to root_url
 		end
@@ -84,7 +84,7 @@ class AssetsController < ApplicationController
 		else
 			flash[:error] = "You can't access files that don't belong to you!"
 			if @parent_folder
-				redirect_to browse_path(@parent_folder)
+				redirect_to folders_path(@parent_folder)
 			else
 				redirect_to root_url
 			end

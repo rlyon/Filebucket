@@ -3,22 +3,15 @@ Filebox::Application.routes.draw do
   resources :assets
   resources :shared_folders
   resources :public_folders
+  #resources :home
 
   devise_for :users
   
   match "download/:id" => "assets#get", :as => "download"
-  
-  #match "public/:folder_id" => "public_folders#browse", :as => "public"
-  
-  match "browse/:folder_id" => "home#browse", :as => "browse"
-  match "browse/:folder_id/new_folder" => "folders#new", :as => "new_sub_folder"
-  match "browse/:folder_id/new_file" => "assets#new", :as => "new_sub_file"
-  match "browse/:folder_id/rename" => "folders#edit", :as => "rename_folder"
    
-  match "home/share" => "home#share"
-  match "home/unshare" => "home#unshare"
-  
+  match "folders/share" => "folders#share"
+  match "folders/unshare" => "folders#unshare"
   match "publicize/:id" => "public_folders#update", :as => "publicize"
   
-  root :to => "home#index"
+  root :to => "folders#index"
 end
