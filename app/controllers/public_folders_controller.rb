@@ -8,7 +8,7 @@ class PublicFoldersController < ApplicationController
   
   def show
     @current_folder = Folder.find(params[:id])
-    raise NotFoundError
+
     if @current_folder.root_public?
       @folders = @current_folder.children
       @assets = @current_folder.assets.order("uploaded_file_file_name desc")

@@ -6,3 +6,5 @@ en:
     attributes:
       asset:
         uploaded_file_file_size: The
+      invite:
+        invited_user_email: This person

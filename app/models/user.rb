@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 	has_many :shared_folders_by_others, :through => :being_shared_folders, :source => :folder
 	has_many :public_folders, :dependent => :destroy
 	
+	has_many :invites, :dependent => :destroy
+	has_one :sponser, :through => :invites 
+	
+	
 	# Include default devise modules. Others available are:
 	# :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,

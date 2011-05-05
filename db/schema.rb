@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110503173433) do
+ActiveRecord::Schema.define(:version => 20110505162657) do
 
   create_table "assets", :force => true do |t|
     t.integer  "user_id"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(:version => 20110503173433) do
 
   add_index "folders", ["parent_id"], :name => "index_folders_on_parent_id"
   add_index "folders", ["user_id"], :name => "index_folders_on_user_id"
+
+  create_table "invites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "invited_user_id"
+    t.string   "invited_user_email"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invites", ["invited_user_id"], :name => "index_invites_on_invited_user_id"
+  add_index "invites", ["user_id"], :name => "index_invites_on_user_id"
 
   create_table "public_folders", :force => true do |t|
     t.integer  "user_id"

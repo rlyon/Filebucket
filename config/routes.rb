@@ -3,6 +3,7 @@ Filebox::Application.routes.draw do
   resources :assets
   resources :shared_folders
   resources :public_folders
+  resources :invites
   #resources :home
 
   devise_for :users

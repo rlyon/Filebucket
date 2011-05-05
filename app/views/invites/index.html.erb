@@ -1,0 +1,8 @@
+<% title "Invites" %>
+
+<% @invites.each do |invite| %>
+	<p><%= invite.invited_user_email %> - <i>(<%= invite.status %>)</i></p>
+<% end %>
+<br />
+
+<%= link_to "Invite a friend to join", new_invite_path %>
