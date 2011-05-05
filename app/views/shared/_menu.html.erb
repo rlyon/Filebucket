@@ -1,5 +1,5 @@
 <div id="menu">
-<% unless @is_this_folder_being_shared %>
+<% unless @is_this_folder_being_shared or @is_this_folder_public %>
 	<ul id="top_menu">
 		<% if user_signed_in? %>
 		<% if @current_folder %>

@@ -1,0 +1,12 @@
+Hello,
+
+<%= @invitation.user.name %> has invited you to sign up for an account on the IBEST Filebox. 
+
+Message from <%= @invitation.user.name %>:
+"<%= @invitation.message %>"
+
+You can sign up here at <%= new_user_registration_url %>.  When signing up for a new account, please make sure that you use the email address that this was sent to. If you have a different preferred email address you may change it after you sign up by editting your account settings. 
+
+Thank you,
+
+The IBEST Filebox

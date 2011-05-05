@@ -7,4 +7,11 @@ class UserMailer < ActionMailer::Base
           :subject => "#{@shared_folder.user.name} wants to share '#{@shared_folder.folder.name}' folder with you" )
   end
   
+  def invitation_to_join(invitation)
+    @invitation = invitation
+    mail( :to => @invitation.invited_user_email,
+          :bcc => "rlyon@uidaho.edu",
+          :subject => "#{@invitation.user.name} has invited you to the IBEST Filebox" )
+  end
+  
 end

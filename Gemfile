@@ -8,6 +8,7 @@ group :default do
   gem 'mocha'
   gem 'acts_as_tree'
   gem 'jquery-rails', '>= 0.2.6'
+  gem 'declarative_authorization'
 end
 
 group :developmant, :test do

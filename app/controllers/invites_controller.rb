@@ -10,9 +10,10 @@ class InvitesController < ApplicationController
   end
   
   def create
-    @invite = current_user.invites.create(params[:invite])
-    @invite.user_id = current_user.id
+    @invite = current_user.invites.new(params[:invite])
+
     if @invite.save
+      UserMailer.invitation_to_join(@invite).deliver
       redirect_to invites_path, :notice => "The invitation has been sent"
     else
       render "new"

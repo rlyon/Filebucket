@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
 	# :message => "must contain at least 1 upper case character and one digit."
 	 
   after_create :check_and_assign_shared_ids_to_shared_folders
+  after_create :activate_if_invited
 
   def check_and_assign_shared_ids_to_shared_folders
     shared_folders_with_same_email = SharedFolder.find_all_by_shared_email(self.email)
@@ -43,6 +44,15 @@ class User < ActiveRecord::Base
       self.account_active = 1
       self.save
     end    
+  end
+  
+  def activate_if_invited
+    invited_user = Invite.find_by_invited_user_email(self.email)
+    if ! invited_user.nil?
+      invited_user.update_attribute(:invited_user_id, self.id)
+      self.account_active = 1
+      self.save
+    end
   end
   
   def has_share_access?(folder)

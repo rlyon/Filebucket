@@ -1,5 +1,5 @@
 class FoldersController < ApplicationController
-	before_filter :authenticate_user!
+	before_filter :authenticate_user!, :except => [ 'index' ] 
 	@public_view = false
 	
 	def index
@@ -12,7 +12,7 @@ class FoldersController < ApplicationController
 
 	def show
     @current_folder = current_user.folders.find_by_id(params[:id])  
-    @is_this_folder_being_shared = false if @current_folder 
+    @is_this_folder_being_shared = false if @current_folder
     
     if @current_folder.nil?
       folder = Folder.find_by_id(params[:id])      

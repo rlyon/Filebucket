@@ -8,6 +8,7 @@ class PublicFoldersController < ApplicationController
   
   def show
     @current_folder = Folder.find(params[:id])
+    @is_this_folder_public = true if @current_folder and @current_folder.root_public?
 
     if @current_folder.root_public?
       @folders = @current_folder.children
