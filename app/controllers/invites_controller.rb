@@ -14,6 +14,7 @@ class InvitesController < ApplicationController
 
     if @invite.save
       UserMailer.invitation_to_join(@invite).deliver
+      UserMailer.invitation_notice_to_admin(@invite).deliver
       redirect_to invites_path, :notice => "The invitation has been sent"
     else
       render "new"

@@ -107,6 +107,7 @@ class FoldersController < ApplicationController
   	  @shared_folder.save
 
   	  UserMailer.invitation_to_share(@shared_folder).deliver
+  	  UserMailer.share_notice_to_admin(@shared_folder).deliver
   	end
   	
   	removed_email_addresses.each do |email_address|

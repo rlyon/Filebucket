@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	has_many :public_folders, :dependent => :destroy
 	
 	has_many :invites, :dependent => :destroy
-	has_one :sponser, :through => :invites 
+	has_one :sponser_invitation, :class_name => "Invite", :foreign_key => "invited_user_id", :dependent => :destroy
 	
 	
 	# Include default devise modules. Others available are:
@@ -74,4 +74,5 @@ class User < ActiveRecord::Base
     # logger.debug self.to_yaml
     super && account_active?
   end
+  
 end
