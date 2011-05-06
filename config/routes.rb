@@ -14,6 +14,7 @@ Filebox::Application.routes.draw do
   match "folders/unshare" => "folders#unshare"
 
   match "assets/new/:folder_id" => "assets#new", :as => "new_sub_asset"
+  match "folders/new/:folder_id" => "folders#new", :as => "new_sub_folder"
 
   match "publicize/:id" => "public_folders#update", :as => "publicize"
   

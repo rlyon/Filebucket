@@ -4,7 +4,7 @@
 		<% if user_signed_in? %>
 		<% if @current_folder %>
 		<li>
-			<%= link_to "New Folder", new_folder_path(@current_folder) %>
+			<%= link_to "New Folder", new_sub_folder_path(@current_folder) %>
 		</li>
 		<li>
 			<%= link_to "Upload File", new_sub_asset_path(@current_folder) %>
