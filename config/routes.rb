@@ -12,6 +12,7 @@ Filebox::Application.routes.draw do
    
   match "folders/share" => "folders#share"
   match "folders/unshare" => "folders#unshare"
+  match "folders/notify" => "folders#notify"
 
   match "assets/new/:folder_id" => "assets#new", :as => "new_sub_asset"
   match "folders/new/:folder_id" => "folders#new", :as => "new_sub_folder"

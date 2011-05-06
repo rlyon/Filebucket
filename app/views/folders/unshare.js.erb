@@ -3,4 +3,7 @@ $("#flash_notice").remove();
 $("#container").prepend("<div id=\"flash_notice\">Successfully unshared shared folder</div>");
 $("#folder_<%= params[:folder_id] %>").removeClass("shared_folder");
 $("#folder_<%= params[:folder_id] %>").addClass("folder");
+//Turning on the notify button
+$("#folder_<%= params[:folder_id] %> .actions div.notify").addClass("hidden");
 $("#folder_<%= params[:folder_id] %> .actions .share a").attr("folder_emails","");
+$("#folder_<%= params[:folder_id] %> .actions .notify a").attr("folder_emails","");

@@ -1,46 +1,57 @@
 $( function () {
-	//open the invitation form when a share button is clicked
 	$( ".share a" ).button()
 	.click( function() {
-		//assign this specific Share link element into a variable called "a"
 		var a = this;
-
-		//First, set the title of the Dialog box to display the folder name
 		$("#invitation_form").attr("title", "Share '" + $(a).attr("folder_name") + "' with others" );
-
-		//a hack to display the different folder names correctly
 		$("#ui-dialog-title-invitation_form").text("Share '" + $(a).attr("folder_name") + "' with others");
-		
-		// Display current shared email addresses
 		$("#email_addresses").val($(a).attr("folder_emails"))
-
-		//then put the folder_id of the Share link into the hidden field "folder_id" of the invite form
 		$("#folder_id").val($(a).attr("folder_id"));
 
-		//the dialog box customization
 		$( "#invitation_form" ).dialog({
 			height: 400,
 			width: 515,
 			modal: true,
 			buttons: {
-				//First button
 				"Share": function() {
-					//get the url to post the form data to
 					var post_url = $("#invitation_form form").attr("action");
-
-					//serialize the form data and post it the url with ajax
 					$.post(post_url,$("#invitation_form form").serialize(), null, "script");
-
 					return false;
 				},
-				//Second button
 				"Unshare": function() {
-					//var post_url = $("#invitation_form form").attr("action");
 					var post_url = "/folders/unshare"
 					$.post(post_url,$("#invitation_form form").serialize(), null, "script");
 					return false;
 				},
-				//Third button
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+
+			}
+		});
+		
+		return false;
+	});
+
+	$( ".notify a" ).button()
+	.click( function() {
+		var a = this;
+		$("#notification_form").attr("title", "Notify users of changes to '" + $(a).attr("folder_name") + "'" );
+		$("#ui-dialog-title-notification_form").text("Notify users of changes to '" + $(a).attr("folder_name") + "'");
+		$("#email_addresses").val($(a).attr("folder_emails"))
+		$("#folder_id").val($(a).attr("folder_id"));
+
+		$( "#notification_form" ).dialog({
+			height: 400,
+			width: 515,
+			modal: true,
+			buttons: {
+				"Notify": function() {
+					var post_url = $("#notification_form form").attr("action");
+					$.post(post_url,$("#notification_form form").serialize(), null, "script");
+					return false;
+				},
 				Cancel: function() {
 					$( this ).dialog( "close" );
 				}

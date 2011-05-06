@@ -1,6 +1,9 @@
 <div id="menu">
 <% unless @is_this_folder_being_shared or @is_this_folder_public %>
 	<ul id="top_menu">
+		<li>
+			<%= link_to "Home", root_url %>
+		</li>
 		<% if user_signed_in? %>
 		<% if @current_folder %>
 		<li>

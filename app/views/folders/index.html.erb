@@ -34,7 +34,7 @@
 	<% unless @is_this_folder_being_shared or ! @current_folder.nil? %>
 	<br />
 	<br />
-	<b>Shared Folders:</b>
+	<b>Folders Shared With You:</b>
 	<!-- Listing Shared Folders (the folders shared by others) -->
 	<% @being_shared_folders.each do |folder| %>
 	<div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
@@ -55,5 +55,6 @@
 
 </div> <!-- Asset list -->
 <%= render :partial => "invitation_form" %>
+<%= render :partial => "notification_form" %>
 <% end %>
 

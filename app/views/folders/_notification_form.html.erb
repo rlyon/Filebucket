@@ -1,0 +1,19 @@
+<div id="notification_form" title="Notify shared users" style="display:none">
+	<%= form_tag '/folders/notify' do %>
+	<label for="email_addresses">
+		Enter recipient email addresses here
+		<br />
+		<i style="font-weight: normal;">Separate multiple addresses with a comma</i>
+	</label>
+	<br />
+	<%= text_area_tag 'email_addresses', "", :class => 'text ui-widget-content ui-corner-all'%>
+	<br />
+	<br />
+	<label for="message">
+		Optional message
+	</label>
+	<br />
+	<%= text_area_tag 'message',"This folder has been updated.  Please log in to the filebox to view changes.",  :class => 'text ui-widget-content ui-corner-all'%>
+	<%= hidden_field_tag "folder_id" %>
+	<% end %>
+</div>

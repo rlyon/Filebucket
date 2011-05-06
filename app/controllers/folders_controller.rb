@@ -128,5 +128,19 @@ class FoldersController < ApplicationController
       }
     end
   end
+  
+  def notify
+    @email_addresses = params[:email_addresses].split(",")
+    @current_folder = Folder.find(params[:folder_id])
+    all_email_addresses = @current_folder.to_shared_emails
+    
+    all_email_addresses.each do |email_address|
+      UserMailer.notify_shared_folder_user(@current_folder,email_address,params[:message])
+    end
+    respond_to do |format|
+      format.js {
+      }
+    end
+  end
 	
 end

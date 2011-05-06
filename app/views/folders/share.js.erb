@@ -13,4 +13,8 @@ $("#folder_<%= params[:folder_id] %>").removeClass("folder");
 //Adding the css class 'shared_folder'
 $("#folder_<%= params[:folder_id] %>").addClass("shared_folder");
 
+//Turning on the notify button
+$("#folder_<%= params[:folder_id] %> .actions div.notify").removeClass("hidden");
+
 $("#folder_<%= params[:folder_id] %> .actions .share a").attr("folder_emails","<%= @email_addresses.join(',') %>");
+$("#folder_<%= params[:folder_id] %> .actions .notify a").attr("folder_emails","<%= @email_addresses.join(',') %>");
