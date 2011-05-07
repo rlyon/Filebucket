@@ -4,8 +4,8 @@ $( function () {
 		var a = this;
 		$("#invitation_form").attr("title", "Share '" + $(a).attr("folder_name") + "' with others" );
 		$("#ui-dialog-title-invitation_form").text("Share '" + $(a).attr("folder_name") + "' with others");
-		$("#email_addresses").val($(a).attr("folder_emails"))
-		$("#folder_id").val($(a).attr("folder_id"));
+		$("#invitation_form #email_addresses").val($(a).attr("folder_emails"))
+		$("#invitation_form #folder_id").val($(a).attr("folder_id"));
 
 		$( "#invitation_form" ).dialog({
 			height: 400,
@@ -39,8 +39,8 @@ $( function () {
 		var a = this;
 		$("#notification_form").attr("title", "Notify users of changes to '" + $(a).attr("folder_name") + "'" );
 		$("#ui-dialog-title-notification_form").text("Notify users of changes to '" + $(a).attr("folder_name") + "'");
-		$("#email_addresses").val($(a).attr("folder_emails"))
-		$("#folder_id").val($(a).attr("folder_id"));
+		$("#notification_form #email_addresses").val($(a).attr("folder_emails"))
+		$("#notification_form #folder_id").val($(a).attr("folder_id"));
 
 		$( "#notification_form" ).dialog({
 			height: 400,

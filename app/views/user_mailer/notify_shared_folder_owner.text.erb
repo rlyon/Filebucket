@@ -1,0 +1,11 @@
+Hello,
+
+Notifications for the folder "<%= @shared_folder.name %>" have just been sent to the following email addresses: 
+
+<% @email_addresses.each do |email_address| %>
+* <%= email_address %>
+<% end %>
+
+Thank you,
+
+The IBEST Filebox

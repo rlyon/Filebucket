@@ -30,9 +30,15 @@ class UserMailer < ActionMailer::Base
     @shared_folder = shared_folder
     @message = message
     mail( :to => email,
-          :cc => @shared_folder.user.email,
           :reply_to => @shared_folder.user.email,
           :subject => "#{@shared_folder.user.name} has updated #{@shared_folder.name}")
+  end
+  
+  def notify_shared_folder_owner(shared_folder,email_addresses)
+    @shared_folder = shared_folder
+    @email_addresses = email_addresses
+    mail( :to => @shared_folder.user.email,
+          :subject => "Folder notification confirmation")
   end
   
 end

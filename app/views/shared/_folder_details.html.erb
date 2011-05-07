@@ -34,7 +34,7 @@
 		</div>
 		
 
-		<div class="notify <%= "hidden" unless folder.shared? %>">
+		<div class="notify<%= " hidden" unless folder.shared? %>">
 			<%= link_to "Notify", "#", :folder_id => folder.id, :folder_name => folder.name, :folder_emails => folder.to_shared_emails.join(',') unless @is_this_folder_being_shared %>
 		</div>
 

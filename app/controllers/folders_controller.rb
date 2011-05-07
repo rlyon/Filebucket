@@ -100,7 +100,7 @@ class FoldersController < ApplicationController
   	new_email_addresses.each do |email_address|
   	  @shared_folder = current_user.shared_folders.new
   	  @shared_folder.folder_id = params[:folder_id]
-  	  @shared_folder.shared_email = email_address
+  	  @shared_folder.shared_email = email_address.strip
   	  shared_user = User.find_by_email(email_address)
   	  @shared_folder.shared_user_id = shared_user.id if shared_user
   	  @shared_folder.message = params[:message]
@@ -130,13 +130,18 @@ class FoldersController < ApplicationController
   end
   
   def notify
-    @email_addresses = params[:email_addresses].split(",")
-    @current_folder = Folder.find(params[:folder_id])
-    all_email_addresses = @current_folder.to_shared_emails
+    email_addresses = params[:email_addresses].split(",")
+    current_folder = Folder.find(params[:folder_id])
+    all_email_addresses = current_folder.to_shared_emails
+    valid_email_addresses = all_email_addresses&email_addresses
     
-    all_email_addresses.each do |email_address|
-      UserMailer.notify_shared_folder_user(@current_folder,email_address,params[:message])
+    # We don't want to allow any email address that are not part of the shared folder addresses.
+    valid_email_addresses.each do |email_address|
+      UserMailer.notify_shared_folder_user(current_folder,email_address.strip,params[:message]).deliver
     end
+    
+    UserMailer.notify_shared_folder_owner(current_folder,valid_email_addresses).deliver
+    
     respond_to do |format|
       format.js {
       }
