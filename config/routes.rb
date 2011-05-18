@@ -4,6 +4,7 @@ Filebox::Application.routes.draw do
   resources :shared_folders
   resources :public_folders
   resources :invites
+  resources :keys
   #resources :home
 
   devise_for :users

@@ -1,28 +1,11 @@
 <%= render :partial => "breadcrumbs" %>
+<%= render :partial => "global_actions" %>
 
 <div class="asset_list">
-	<b>Folders:</b>
-	<% if @folders.empty? %>
-	  <p class="empty"><i>Empty</i></p>
-	<% else %>
-	<%= render :partial => "shared/list_header" %>
-	<% @folders.each do |folder| %>
-		<%= render :partial => "shared/folder_details", :locals => { :folder => folder, :descend => folder_path(folder) } %>
-	<% end %>
-	<% end %>
-	
-	<br />
-	<br />
-	<b>Files:</b>
-	<% if @assets.empty? %>
-	  <p class="empty"><i>Empty</i></p>
-	<% else %>
-	<%= render :partial => "shared/list_header" %>
-	<% @assets.each do |asset| %>
-		<%= render :partial => "shared/asset_details", :locals => { :asset => asset } %>
-	<% end %>
-	<% end %>
+	<%= render :partial => "shared/folder_details" %>	
+	<%= render :partial => "shared/asset_details" %>
 </div>
 
 <%= render :partial => "invitation_form" %>
 <%= render :partial => "notification_form" %>
+<%= render :partial => "new_folder_form" %>

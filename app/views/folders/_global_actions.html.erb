@@ -1,0 +1,14 @@
+<div class="new_folder">
+	<% if @current_folder.nil? %>
+	<%= link_to "New Folder", "#" unless @is_this_folder_being_shared %>
+	<% else %>
+	<%= link_to "New Folder", "#", :parent_id => @current_folder.id unless @is_this_folder_being_shared %>
+	<% end %>
+</div>
+<div class="upload">
+	<% if @current_folder.nil? %>
+	<%= link_to "Upload Files", new_asset_path unless @is_this_folder_being_shared %>
+	<% else %>
+	<%= link_to "Upload Files", new_sub_asset_path(@current_folder) unless @is_this_folder_being_shared %>
+	<% end %>
+</div>

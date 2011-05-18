@@ -39,12 +39,16 @@ class FoldersController < ApplicationController
 	end
 
 	def create
-		@folder = current_user.folders.new(params[:folder])
-		# placeholder for inheriting shared settings.
-		
+		@folder = current_user.folders.new
+		@folder.name = params[:name]
+		if params[:parent_id]
+		  @current_folder = current_user.folders.find_by_id(params[:parent_id])
+	  end
+		@folder.parent_id = @current_folder.id unless @current_folder.nil?
+
+		# placeholder for inheriting shared settings.		
 		if @folder.save
 			flash[:notice] = "Successfully created folder."
-
 			if @folder.parent
 				redirect_to folder_path(@folder.parent)
 			else
@@ -80,7 +84,7 @@ class FoldersController < ApplicationController
 		@folder.destroy
 		flash[:notice] = "Successfully deleted the folder and all the contents inside."
 		if @parent_folder
-			redirect_to folders_path(@parent_folder)
+			redirect_to folder_path(@parent_folder)
 		else
 			redirect_to root_url
 		end

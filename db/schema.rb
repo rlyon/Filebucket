@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505162657) do
+ActiveRecord::Schema.define(:version => 20110518023208) do
 
   create_table "assets", :force => true do |t|
     t.integer  "user_id"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(:version => 20110505162657) do
 
   add_index "invites", ["invited_user_id"], :name => "index_invites_on_invited_user_id"
   add_index "invites", ["user_id"], :name => "index_invites_on_user_id"
+
+  create_table "keys", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "auth"
+    t.integer  "folder_id"
+    t.datetime "expire"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "public_folders", :force => true do |t|
     t.integer  "user_id"

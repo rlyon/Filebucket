@@ -1,0 +1,15 @@
+<%= form_for @key do |f| %>
+ <%= f.error_messages %>
+ <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+ </p>
+ <p>
+		<%= f.label :expire %>
+		<%= f.date_select :expire %>
+ </p>
+   <%= f.hidden_field :folder_id %>
+ <p>
+   <%= f.submit "Generate Key" %>
+</p>
+<% end %>

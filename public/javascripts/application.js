@@ -63,4 +63,35 @@ $( function () {
 
 		return false;
 	});
+	
+	$( ".new_folder a" ).button()
+	.click( function() {
+		var a = this;
+		$("#new_folder_form").attr("title", "Create a new folder" );
+		$("#ui-dialog-title-new_folder_form").text("Create a new folder");
+		$("#new_folder_form #parent_id").val($(a).attr("parent_id"));
+
+		$( "#new_folder_form" ).dialog({
+			height: 200,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Create": function() {
+					var post_url = $("#new_folder_form form").attr("action");
+					$.post(post_url,$("#new_folder_form form").serialize(), null, "script");
+					return false;
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+
+			}
+		});
+		return false;
+	});
+		
+	$( ".upload a" ).button();
+
 });

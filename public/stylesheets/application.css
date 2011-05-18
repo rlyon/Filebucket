@@ -96,6 +96,7 @@ a {
 	font-weight:bold;
 	//font-size:12px;
 	overflow:hidden;
+	clear: both;
 } 
 
 .file_name_header, .file_name {
@@ -122,6 +123,16 @@ a {
 
 .asset_list {
 	padding:20px 0;
+}
+.asset_details_title {
+	font-weight:normal;
+	font-size: 15px;
+	display: block;
+	border:1px solid #CFEBFF;
+	width: 100%;
+	height: 25px;
+	background-color: #EFF8FF;
+	padding: 3px;
 }
 .asset_details {
 	font-weight:normal;
@@ -213,16 +224,18 @@ a {
 	float:right;
 	font-size:11px;
 }
-.share, .share_edit, .rename, .download, .delete, .public, .private, .notify {
+.share, .share_edit, .rename, .download, .delete, .public, .private, .notify, .upload, .new_folder {
 	float:left;
 }
-.asset_details .share a, .asset_details .share_edit a, .asset_details .rename a, .asset_details .download a, .asset_details .delete a, .public a, .private a, .notify a {
+.asset_details .share a, .asset_details .share_edit a, .asset_details .rename a, .asset_details .download a, .asset_details .delete a, .public a, .private a, .notify a, .upload a, .new_folder a {
 	border: 1px solid #CFE9FF;
 	//font-size: 11px;
 	margin-left: 5px;
 	padding: 0 2px;
 }
 .asset_details .notify a:hover,
+.asset_details .upload a:hover,
+.asset_details .new_folder a:hover,
 .asset_details .share a:hover,
 .asset_details .share_edit a:hover,
 .asset_details .rename a:hover, 
@@ -261,15 +274,10 @@ a {
 	//font-size: 14px ;
 	padding: 3px 10px !important;
 }
-.share .ui-button-text-only .ui-button-text, .notify .ui-button-text-only .ui-button-text {
+.share .ui-button-text-only .ui-button-text, 
+.notify .ui-button-text-only .ui-button-text {
 	padding: 0 2px !important;
 	font-size:11px;
-	font-weight:normal;
-}
-
-.share_edit .ui-button-text-only .ui-button-text {
-	padding: 0 2px !important;
-	//font-size:11px;
 	font-weight:normal;
 }
 
@@ -311,6 +319,19 @@ a {
 	color:#7F7F7F;
 }
 
+#new_folder_form{
+	//font-size:14px;
+}
+#new_folder_form label{
+	font-weight:bold;
+}
+#new_folder_form input.text {
+	width:320px;
+	height:20px;
+	//font-size:12px;
+	color:#7F7F7F;	
+}
+
 .file_upload_status_success {
 	color: green;
 }
@@ -326,4 +347,16 @@ a {
 
 .hidden {
 	display: none;
+}
+
+.float_left {
+	float: left;
+}
+
+.float_right {
+	float: right;
+}
+
+.clear {
+	clear: both;
 }
