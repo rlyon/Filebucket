@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
   end
   
   def has_share_access?(folder)
+    return false if folder.nil?
     return true if self.folders.include?(folder)
     return true if self.shared_folders_by_others.include?(folder)
     return_value = false
