@@ -21,7 +21,11 @@ class KeysController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @key = current_user.keys.find(params[:id])
+    @key.destroy
+    flash[:notice] = "Successfully removed key"
+    redirect_to keys_path
   end
 
 end

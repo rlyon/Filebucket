@@ -1,5 +1,8 @@
 <% @keys.each do |key| %>
-	<p><%= key.name %></p>
+	<p>
+		<%= key.name %> | 
+	  <%= link_to "Remove", key, :confirm => 'Are you sure?', :method => :delete %>
+	</p>
 <% end %>
 
 <%= link_to "New Key", new_key_path %>
