@@ -1,7 +1,7 @@
 class Folder < ActiveRecord::Base
 	acts_as_tree
 	belongs_to :user
-	has_many :keys, :dependent => :destroy
+	#has_many :keys, :dependent => :destroy
 	has_many :assets, :dependent => :destroy
 	has_many :shared_folders, :dependent => :destroy
 	has_many :public_folders, :dependent => :destroy

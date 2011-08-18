@@ -48,19 +48,25 @@ class FoldersController < ApplicationController
 
 		# placeholder for inheriting shared settings.		
 		if @folder.save
-			flash[:notice] = "Successfully created folder."
 			if @folder.parent
-				redirect_to folder_path(@folder.parent)
+				@path = folder_path(@folder.parent)
 			else
-				redirect_to root_url
+				@path = root_url
 			end
+
+			#flash[:notice] = "Successfully created folder."
+			#if @folder.parent
+			#	redirect_to folder_path(@folder.parent)
+			#else
+			#	redirect_to root_url
+			#end
 		else
 			render :action => 'new'
 		end
 	end
 
 	def edit
-		@folder = current_user.folders.find(params[:folder_id])
+		@folder = current_user.folders.find(params[:id])
 		@current_folder = @folder.parent
 	end
 
