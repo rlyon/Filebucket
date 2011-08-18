@@ -15,10 +15,10 @@
 		</li>
 		<% else %>
 		<li class="bolder">
-			 <%= link_to "Create folder in '#{@current_folder.name}'", new_sub_folder_path(@current_folder) unless @is_this_folder_being_shared %>
+			 <%= link_to "Create folder in '#{truncate(@current_folder.name, :length => 10)}'", new_sub_folder_path(@current_folder) unless @is_this_folder_being_shared %>
 		</li>
 		<li class="bolder">
-			<%= link_to "Upload files to '#{@current_folder.name}'", new_sub_asset_path(@current_folder) unless @is_this_folder_being_shared %>
+			<%= link_to "Upload files to '#{truncate(@current_folder.name, :length => 10)}'", new_sub_asset_path(@current_folder) unless @is_this_folder_being_shared %>
 		</li>
 		<% end %>
 		<li>
