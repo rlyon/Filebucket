@@ -39,30 +39,32 @@ class FoldersController < ApplicationController
 	end
 
 	def create
-		@folder = current_user.folders.new
-		@folder.name = params[:name]
-		if params[:parent_id]
-		  @current_folder = current_user.folders.find_by_id(params[:parent_id])
-	  end
-		@folder.parent_id = @current_folder.id unless @current_folder.nil?
+		@folder = current_user.folders.new(params[:folder])
+		#@folder.name = params[:name]
+		#if params[:parent_id]
+		#	@current_folder = current_user.folders.find_by_id(params[:parent_id])
+	  	#end
+		#@folder.parent_id = @current_folder.id unless @current_folder.nil?
 
-		# placeholder for inheriting shared settings.		
 		if @folder.save
 			if @folder.parent
-				@path = folder_path(@folder.parent)
-			else
-				@path = root_url
-			end
-
-			#flash[:notice] = "Successfully created folder."
-			#if @folder.parent
-			#	redirect_to folder_path(@folder.parent)
-			#else
-			#	redirect_to root_url
-			#end
+                                @path = folder_path(@folder.parent)
+                        else
+                                 @path = root_url
+                        end
+			redirect_to @path, :notice => "Created new folder"
 		else
-			render :action => 'new'
+			render 'new'
 		end
+		# placeholder for inheriting shared settings.
+		#respond_to do |format|
+		#	if @folder.parent
+		#		@path = folder_path(@folder.parent)
+		#	else
+		#		 @path = root_url
+		#	end
+		#	format.html { redirect_to @path, :notice => "Created new folder" }
+		#end		
 	end
 
 	def edit

@@ -1,8 +1,8 @@
-<div class="new_folder">
+<div class="newfolder">
 	<% if @current_folder.nil? %>
-	<%= link_to "New Folder", "#" unless @is_this_folder_being_shared %>
+	<%= link_to "New Folder", new_folder_path unless @is_this_folder_being_shared %>
 	<% else %>
-	<%= link_to "New Folder", "#", :parent_id => @current_folder.id unless @is_this_folder_being_shared %>
+	<%= link_to "New Folder", new_sub_folder_path(@current_folder) unless @is_this_folder_being_shared %>
 	<% end %>
 </div>
 <div class="upload">

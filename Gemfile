@@ -18,5 +18,5 @@ group :developmant, :test do
 end
 
 group :production do
-  #gem 'mysql'
+  gem 'mysql'
 end
