@@ -35,11 +35,12 @@
 				</div>
 			</div>
 			<%= render :partial => "shared/menu" %>
+			<%= render :partial => "folders/breadcrumbs" %>
 			<div id="container">
 				<% flash.each do |name, msg| %>
 				<%= content_tag :div, msg, :id => "flash_#{name}" %>
 				<% end %>
-				<%= content_tag :h1, yield(:title) if show_title? %>
+				<%= content_tag :h2, yield(:title) if show_title? %>
 				<%= yield %>
 			</div>
 		</div>

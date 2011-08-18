@@ -7,6 +7,8 @@ class FoldersController < ApplicationController
 		  @being_shared_folders = current_user.shared_folders_by_others
 			@folders = current_user.folders.roots
 			@assets = current_user.assets.where("folder_id is NULL").order("uploaded_file_file_name desc")
+	else
+		@current_folder = nil
 		end
 	end
 

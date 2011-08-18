@@ -1,5 +1,8 @@
-<% title "New Folder" %>
-<%= render :partial => "folders/breadcrumbs" %>
+<% unless @folder.parent %>
+	<% title "Creating a folder in 'Home'" %>
+<% else %>
+	<% title "Creating a folder in #{@folder.parent.name}" %>
+<% end %>
 
 <%= render 'form' %>
 

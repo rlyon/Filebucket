@@ -1,7 +1,3 @@
-<% if @folders.empty? %>
-  <p class="empty"><i>No Folders</i></p>
-<% else %>
-<%= render :partial => "shared/list_header" %>
 <% @folders.each do |folder| %>
 		<div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
 		<div class="file_name">
@@ -49,5 +45,4 @@
 		</div>
 		<% end %>
 	</div>
-<% end %>
 <% end %>

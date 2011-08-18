@@ -1,4 +1,5 @@
-<div class="breadcrumbs">
+<% if user_signed_in? %>
+<div id="breadcrumbs">
 	<% if @current_folder %>
 	<%= link_to "Home Directory", folders_path %>
 	<% @current_folder.ancestors.reverse.each do |folder| %>
@@ -9,3 +10,4 @@
 	Home Directory
 	<% end %>
 </div>
+<% end %>

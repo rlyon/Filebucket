@@ -1,6 +1,3 @@
-<% if @assets.empty? %>
-  <p class="empty"><i>No Files</i></p>
-<% else %>
 <% @assets.each do |asset| %>
 	<div class="asset_details file">
 		<div class="file_name">
@@ -30,5 +27,4 @@
 			<% end %>
 		</div>
 	</div> 
-<% end %>
 <% end %>

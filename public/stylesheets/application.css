@@ -45,9 +45,9 @@ a {
 
 #container {
 	margin: 0 auto;
-	padding: 20px 40px;
+	padding: 0px 20px 20px 20px;
 	color: #000;
-	border-top: solid 1px #BFBFBF;
+	border-top: solid 6px #666;
 }
 #flash_notice, #flash_error, #flash_alert {
 	padding: 5px 8px;
@@ -192,6 +192,54 @@ a {
 	background:#EFF8FF;
 	border:1px solid #CFEBFF;
 }
+
+#menu ul li.noticeme a, #menu ul li.noticeme a:visited {
+	display:block;
+	padding:0 15px;
+	line-height:25px;
+	text-decoration:none;
+	color:#003300;
+	background:#99ff99;
+	border-top: 1px solid #3c3;
+	border-right: 1px solid #3c3;
+	border-left: 1px solid #3c3;
+	border-bottom: 1px solid #CFEBFF;
+}
+
+#menu ul li.bolder a, #menu ul li.bolder a:visited {
+	display:block;
+	padding:0 15px;
+	line-height:25px;
+	text-decoration:none;
+	color:#fff;
+	background:#369;
+	border-top: 1px solid #039;
+	border-right: 1px solid #039;
+	border-left: 1px solid #039;
+	border-bottom: 1px solid #039;
+}
+
+#menu ul li a:hover, #menu ul li a:active {
+	background:#DFF1FF;
+	border:1px solid #AFDDFF;
+}
+
+#menu ul li.noticeme a:hover, #menu ul li.noticeme a:active {
+	background:#66cc66;
+	border-top: 1px solid #1a1;
+	border-right: 1px solid #1a1;
+	border-left: 1px solid #1a1;
+	border-bottom: 1px solid #AFDDFF;
+}
+
+#menu ul li.bolder a:hover, #menu ul li.bolder a:active {
+	background:#036;
+	border-top: 1px solid #039;
+	border-right: 1px solid #039;
+	border-left: 1px solid #039;
+	border-bottom: 1px solid #039;
+}
+
 #menu ul li a:hover, #menu ul li a:active {
 	background:#DFF1FF;
 	border:1px solid #AFDDFF;
@@ -229,12 +277,15 @@ a {
 	border:1px solid #DFDFDF;
 }
 
-.breadcrumbs {
-	margin:10px 0;
+#breadcrumbs {
+	display: block;
+	background-color: #111;
+	padding: 7px 20px;
 	font-weight:bold;
 	color: #AAA;
+	border-top: solid 6px #666;
 }
-.breadcrumbs a {
+#breadcrumbs a {
 	color:#1D96EF;
 	text-decoration:none;
 }

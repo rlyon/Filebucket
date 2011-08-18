@@ -5,12 +5,9 @@
   and should not be used for long term storage <i>(yet)</i>. 
 </p>
 <% else %>
-<%= render :partial => "breadcrumbs" %>
-<%= render :partial => "global_actions" %>
 
 <div class="asset_list">
-	<%= render :partial => "shared/folder_details" %>
-	<%= render :partial => "shared/asset_details" %>
+	<%= render :partial => "shared/assets" %>
 
 	<% unless @is_this_folder_being_shared or ! @current_folder.nil? %>
 	<br />

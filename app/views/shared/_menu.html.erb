@@ -1,22 +1,50 @@
 <div id="menu">
 <% unless @is_this_folder_being_shared or @is_this_folder_public %>
 	<ul id="top_menu">
-		<li>
+		<li class="bolder">
 			<%= link_to "Home", root_url %>
 		</li>
+			
 		<% if user_signed_in? %>
-		<li>
-			<%= link_to "Invite", invites_path %>
+		<% if @current_folder.nil? %>
+		<li class="bolder">
+			<%= link_to "Create folder in 'Home'", new_folder_path unless @is_this_folder_being_shared %>
+		</li>
+		<li class="bolder">
+			<%= link_to "Upload files to 'Home'", new_asset_path unless @is_this_folder_being_shared %>
 		</li>
 		<% else %>
-		<li>
-			<%= link_to "Public Folders", public_folders_path %>
+		<li class="bolder">
+			 <%= link_to "Create folder in '#{@current_folder.name}'", new_sub_folder_path(@current_folder) unless @is_this_folder_being_shared %>
+		</li>
+		<li class="bolder">
+			<%= link_to "Upload files to '#{@current_folder.name}'", new_sub_asset_path(@current_folder) unless @is_this_folder_being_shared %>
 		</li>
 		<% end %>
 		<li>
-			<%= link_to "Problems?", "http://tickets.ibest.uidaho.edu" %>
+			<%= link_to "Invite", invites_path %>
+		</li>
+		<% end %>
+		<li>
+			<%= link_to "Report Problems", "http://tickets.ibest.uidaho.edu" %>
 		</li>
 	</ul>
+	<!--
+	<div class="newfolder">
+        	<% if @current_folder.nil? %>
+        		<%= link_to "Create folder in 'Home'", new_folder_path unless @is_this_folder_being_shared %>
+        	<% else %>
+        		<%= link_to "Create folder in '#{@current_folder.name}'", new_sub_folder_path(@current_folder) unless @is_this_folder_being_shared %>
+        	<% end %>
+	</div>
+	<div class="upload">
+	        <% if @current_folder.nil? %>
+		        <%= link_to "Upload files to 'Home'", new_asset_path unless @is_this_folder_being_shared %>
+	        <% else %>
+       			<%= link_to "Upload files to '#{@current_folder.name}'", new_sub_asset_path(@current_folder) unless @is_this_folder_being_shared %>
+        	<% end %>
+	</div>
+	-->
 <% else %>
 	<h3>This folder is being shared to you by <%= @current_folder.user.name %></h3>
 <% end %>

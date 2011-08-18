@@ -1,0 +1,12 @@
+<% if @folders.empty? and @assets.empty? %>
+	<p><i>Empty</i></p>
+	<p>
+	<% (1..10).each do |n| %>
+		<br />
+	<% end %>
+	</p>
+<% else %>
+	<%= render :partial => "shared/list_header" %>
+	<%= render :partial => "shared/folder_details" %>
+	<%= render :partial => "shared/asset_details" %>
+<% end %>

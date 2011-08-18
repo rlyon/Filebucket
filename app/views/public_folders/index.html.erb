@@ -1,8 +1,7 @@
-<%= render :partial => "breadcrumbs" %>
 <%= render :partial => "shared/list_header" %>
 
 <div class="asset_list">
-	<% if !@folders.nil? and @folders.empty? %>
+	<% if @folders.empty? %>
 	  <p class="empty"><i>None</i></p>
 	<% else %>
 	<% @public_folders.each do |public_folder| %>
