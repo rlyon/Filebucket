@@ -430,4 +430,14 @@ a {
 	clear: both;
 }
 
+a.sharebutton,
+a.setprivatebutton,
+a.setpublicbutton,
+a.editbutton,
+a.notifybutton,
+a.downloadbutton,
+a.deletebutton {
+	margin-top: -10px; font-size: 10px; !important
+}
+
 

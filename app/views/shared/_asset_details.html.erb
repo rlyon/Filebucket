@@ -17,13 +17,9 @@
 			<%= asset.uploaded_file_updated_at %>
 		</div>
 		<div class="actions">
-			<div class="download">
-				<%= link_to "Download", download_path(asset) unless @is_this_folder_being_shared %>
-			</div>
+			<%= link_to "Download", download_path(asset), :class => "downloadbutton" unless @is_this_folder_being_shared %>
 			<% if !@public_view %>
-			<div class="delete">
-				<%= link_to "Delete", asset, :confirm => 'Are you sure?', :method => :delete unless @is_this_folder_being_shared %>
-			</div>
+				<%= link_to "Delete", asset, :confirm => 'Are you sure?', :method => :delete, :class => "deletebutton" unless @is_this_folder_being_shared %>
 			<% end %>
 		</div>
 	</div> 
