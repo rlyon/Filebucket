@@ -191,6 +191,10 @@ a {
 	color:#45759F;
 	background:#EFF8FF;
 	border:1px solid #CFEBFF;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	border-top-left-radius: 10px;
 }
 
 #menu ul li.noticeme a, #menu ul li.noticeme a:visited {
@@ -204,6 +208,10 @@ a {
 	border-right: 1px solid #3c3;
 	border-left: 1px solid #3c3;
 	border-bottom: 1px solid #CFEBFF;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	border-top-left-radius: 10px;
 }
 
 #menu ul li.bolder a, #menu ul li.bolder a:visited {
@@ -217,6 +225,10 @@ a {
 	border-right: 1px solid #039;
 	border-left: 1px solid #039;
 	border-bottom: 1px solid #039;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	border-top-left-radius: 10px;
 }
 
 #menu ul li a:hover, #menu ul li a:active {
