@@ -62,13 +62,14 @@ class User < ActiveRecord::Base
     return true if self.shared_folders_by_others.include?(folder)
     return_value = false
   
-    folder.ancestors.each do |ancestor_folder|
-      return_value = self.being_shared_folders.include?(ancestor_folder)
-      if return_value #if it's true
-        return true
+    unless folder.nil?
+      folder.ancestors.each do |ancestor_folder|
+        return_value = self.being_shared_folders.include?(ancestor_folder)
+        if return_value #if it's true
+          return true
+        end
       end
     end
-  
     return false
   end
   
