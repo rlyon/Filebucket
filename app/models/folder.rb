@@ -48,5 +48,33 @@ class Folder < ActiveRecord::Base
     end
     email_addresses
   end
+  
+  def zip
+    if self.zipped_file.nil?
+      self.zipped_file = "/tmp/uploader/#{SecureRandom.hex(32)}.zip"
+      self.zipped_at = Time.now
+      self.save!
+      self._zip
+    else
+      # Check for modifications and rebuild if newer
+      unless self.updated_at >= self.zipped_at
+        logger.info("Rebuilding zipfile for #{self.name}")
+        self._zip
+      end
+    end
+    
+    self.zipped_file
+    
+  end
+
+protected
+  def _zip
+    Zip::ZipOutputStream.open(self.zipped_file) do |z|
+      self.assets.each do |asset|
+        z.put_next_entry(asset.name)
+        z.print IO.read(asset.file.url)
+      end
+    end
+  end
 
 end
