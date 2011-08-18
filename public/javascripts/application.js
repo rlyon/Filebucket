@@ -1,5 +1,5 @@
 $( function () {
-	$( ".share a" ).button()
+	$( "a.sharebutton" ).button({ icons : { primary : "ui-icon-person" }, text : false })
 	.click( function() {
 		var a = this;
 		$("#invitation_form").attr("title", "Share '" + $(a).attr("folder_name") + "' with others" );
@@ -34,7 +34,7 @@ $( function () {
 		return false;
 	});
 
-	$( ".notify a" ).button()
+	$( "a.notifybutton" ).button({ icons : { primary : "ui-icon-info" }, text : false })
 	.click( function() {
 		var a = this;
 		$("#notification_form").attr("title", "Notify users of changes to '" + $(a).attr("folder_name") + "'" );
@@ -68,10 +68,8 @@ $( function () {
 	$( ".upload a" ).button();
 	
 	$('a.deletebutton').button({ icons : { primary : "ui-icon-close" }, text : false });
-	$('a.sharebutton').button({ icons : { primary : "ui-icon-person" }, text : false });
 	$('a.setpublicbutton').button({ icons : { primary : "ui-icon-folder-open" }, text : false });
 	$('a.setprivatebutton').button({ icons : { primary : "ui-icon-folder-collapsed" }, text : false });
 	$('a.editbutton').button({ icons : { primary : "ui-icon-pencil" }, text : false });
-	$('a.notifybutton').button({ icons : { primary : "ui-icon-info" }, text : false });
 	$('a.downloadbutton').button({ icons : { primary : "ui-icon-arrowthickstop-1-s" }, text : false });
 });
