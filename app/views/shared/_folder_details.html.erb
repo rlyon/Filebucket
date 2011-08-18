@@ -25,8 +25,8 @@
 			<% end %>
 			<%= link_to "Delete", folder, :confirm => 'Are you sure to delete the folder and all of its contents?', :class => "deletebutton", :method => :delete unless @is_this_folder_being_shared %>
 			<%= link_to "Rename", edit_folder_path(folder), :class => "editbutton" unless @is_this_folder_being_shared %>
-			<%= link_to "Notify", "#", :folder_id => folder.id, :folder_name => folder.name, :folder_emails => folder.to_shared_emails.join(','), :class => "notifybutton" unless @is_this_folder_being_shared %>
-			<%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name, :folder_emails => folder.to_shared_emails.join(','), :class => "sharebutton" unless @is_this_folder_being_shared %>
+			<%= link_to "Notify", "#", :folder_id => folder.id, :folder_name => folder.name, :folder_emails => folder.to_shared_emails.join(','), :class => "notify" unless @is_this_folder_being_shared %>
+			<%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name, :folder_emails => folder.to_shared_emails.join(','), :class => "share" unless @is_this_folder_being_shared %>
 		</div>
 		<% end %>
 	</div>

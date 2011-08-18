@@ -45,7 +45,7 @@ a {
 
 #container {
 	margin: 0 auto;
-	padding: 0px 20px 20px 20px;
+	padding: 0px 20px 0px 20px;
 	color: #000;
 	border-top: solid 6px #666;
 }
@@ -306,61 +306,10 @@ a {
 	float:right;
 	font-size:11px;
 }
-.share, .share_edit, .rename, .download, .delete, .public, .private, .notify, .upload, .newfolder {
-	float:left;
-}
-.asset_details .share a, .asset_details .share_edit a, .asset_details .rename a, .asset_details .download a, .asset_details .delete a, .public a, .private a, .notify a, .upload a, .new_folder a {
-	border: 1px solid #CFE9FF;
-	//font-size: 11px;
-	margin-left: 5px;
-	padding: 0 2px;
-}
-.asset_details .notify a:hover,
-.asset_details .upload a:hover,
-.asset_details .new_folder a:hover,
-.asset_details .share a:hover,
-.asset_details .share_edit a:hover,
-.asset_details .rename a:hover, 
-.asset_details .download a:hover, 
-.asset_details .delete a:hover, 
-.asset_details .public a:hover,
-.asset_details .private a:hover {
-	border:1px solid #8FCDFF;
-}
-.asset_details .delete a {
-	color:#BF0B12;
-	border:1px solid #FFCFD1;
-}
-.asset_details .delete a:hover {
-	color:#BF0B12;
-	border:1px solid #FF8F93;
-}
-.asset_details .public a {
-	color:#BF0B12;
-	border:1px solid #FFCFD1;
-}
-.asset_details .public a:hover {
-	color:#BF0B12;
-	border:1px solid #FF8F93;
-}
-.asset_details .private a {
-	color:#393;
-	border:1px solid #9F9;
-}
-.asset_details .private a:hover {
-	color:#393;
-	border:1px solid #6C6;
-}
 
 .ui-button-text-only .ui-button-text {
 	//font-size: 14px ;
 	padding: 3px 10px !important;
-}
-.share .ui-button-text-only .ui-button-text, 
-.notify .ui-button-text-only .ui-button-text {
-	padding: 0 2px !important;
-	font-size:11px;
-	font-weight:normal;
 }
 
 #invitation_form{
@@ -430,14 +379,40 @@ a {
 	clear: both;
 }
 
+a.share,
 a.sharebutton,
 a.setprivatebutton,
 a.setpublicbutton,
 a.editbutton,
+a.notify,
 a.notifybutton,
 a.downloadbutton,
 a.deletebutton {
 	margin-top: -10px; font-size: 10px; !important
+}
+
+#buttonhelp {
+	background-color: #ddd; 
+	padding: 5px; 
+	-moz-border-radius-bottomright: 15px;
+	border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-left-radius: 15px;
+	margin-top: 30px; 
+	display:block;
+	font-size: 11px;
+	color: #666;
+	opacity:0.8;
+	filter:alpha(opacity=80);
+}
+
+#buttonhelp h4 {
+	font-size: 13px;
+	font-weight:bold;
+}
+
+#buttonhelp td {
+	padding: 4px;
 }
 
 
