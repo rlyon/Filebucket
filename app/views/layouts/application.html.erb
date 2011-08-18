@@ -14,9 +14,10 @@
 		<%= yield(:head) %>
 	</head>
 	<body>
+		<div id="page">
 		<div class="header_wrapper">
 			<div class="logo">
-				<%= link_to "IBEST Filebox (beta)", root_url %>
+				<%= link_to image_tag("filebucket-logo.png", :border => 0), root_url %>
 			</div>
 			<div id="login_user_status">
 				<% if user_signed_in? %>
@@ -40,6 +41,25 @@
 			<% end %>
 			<%= content_tag :h1, yield(:title) if show_title? %>
 			<%= yield %>
+		</div>
+		</div>
+		<div id="footer"> 
+		Copyright &copy; 2011, All rights reserved - Initiative for
+		Bioinformatics and Evolutionary Studies. <br /> 
+		University of Idaho | Life Science South | Room 252 | 
+		PO Box 443051 | Moscow, ID 83844-3051<br /> 
+		Phone - (208) 885-4267 :: Fax - (208) 885-7905<br /> 
+
+		<a href="mailto:swicks@uidaho.edu">Coordinator</a> 
+		&nbsp;::&nbsp;
+		<a href="mailto:rlyon@uidaho.edu">Web Support</a> 
+		&nbsp;::&nbsp;
+		<a href="mailto:tnelson@uidaho.edu">Server Support</a> 
+		&nbsp;::&nbsp;
+
+		<a href="mailto:rlyon@uidaho.edu">Cluster Support</a> 
+		<br /> 
+		<br /> 
 		</div>
 	</body>
 </html>
