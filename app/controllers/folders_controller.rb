@@ -169,7 +169,7 @@ class FoldersController < ApplicationController
 		  folder ||= Folder.find(params[:id]) if current_user.has_share_access?(Folder.find(params[:id]))
 		end
 		unless folder.nil?
-			send_file folder.zip, :type => "application/zip", :filename => folder.name
+			send_file folder.zip, :type => "application/zip", :filename => "#{folder.name}.zip"
 		else
 			flash[:error] = "You can't access folders that don't belong to you!"
 			redirect_to root_url

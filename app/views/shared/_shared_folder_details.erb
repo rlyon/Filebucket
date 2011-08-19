@@ -16,7 +16,7 @@
 	<div class="file_last_updated">
 	</div>
 	<div class="actions">
-		<%= link_to "Download entire folder", "#", :confirm => "Depending on the size and quantity of the files in this folder, it could take alot of time before the download begins", :class => "shared_downloadbutton" %>
+		<%= link_to "Download the entire folder", download_folder_path(folder), :confirm => "Depending on the size and quantity of the files in this folder, it could take alot of time before the download begins", :class => "shared_downloadbutton" %>
 	</div>
 </div>
 <% end %>

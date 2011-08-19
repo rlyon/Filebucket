@@ -18,9 +18,6 @@
 		</div>
 		<% if !@public_view %>
 		<div class="actions">
-			<% if user_signed_in? %>
-				<%= link_to "Download", download_folder_path(folder), :confirm => "Depending on the size and quantity of the files in this folder, it could take alot of time before the download begins", :class => "downloadbutton" %>
-			<% end %>
 			<% if folder.parent.nil? and folder.public? %>
 				<%= link_to "Set Private", publicize_path(folder), :class => "setprivatebutton" unless @is_this_folder_being_shared %>
 			<% elsif folder.parent.nil? %>
@@ -30,6 +27,9 @@
 			<%= link_to "Rename", edit_folder_path(folder), :class => "editbutton" unless @is_this_folder_being_shared %>
 			<%= link_to "Notify", "#", :folder_id => folder.id, :folder_name => folder.name, :folder_emails => folder.to_shared_emails.join(','), :class => "notify" unless @is_this_folder_being_shared %>
 			<%= link_to "Share", "#", :folder_id => folder.id, :folder_name => folder.name, :folder_emails => folder.to_shared_emails.join(','), :class => "share" unless @is_this_folder_being_shared %>
+			<% if user_signed_in? %>
+				<%= link_to "Download", download_folder_path(folder), :confirm => "Depending on the size and quantity of the files in this folder, it could take alot of time before the download begins", :class => "shared_downloadbutton" %>
+			<% end %>
 		</div>
 		<% end %>
 	</div>

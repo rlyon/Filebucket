@@ -387,6 +387,7 @@ a.editbutton,
 a.notify,
 a.notifybutton,
 a.downloadbutton,
+a.shared_downloadbutton,
 a.deletebutton {
 	margin-top: -10px; font-size: 10px; !important
 }
@@ -394,10 +395,6 @@ a.deletebutton {
 #buttonhelp {
 	background-color: #ddd; 
 	padding: 5px; 
-	-moz-border-radius-bottomright: 15px;
-	border-bottom-right-radius: 15px;
-	-moz-border-radius-bottomleft: 15px;
-	border-bottom-left-radius: 15qpx;
 	margin-top: 30px; 
 	display:block;
 	font-size: 11px;
