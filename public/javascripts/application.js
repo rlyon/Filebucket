@@ -72,6 +72,7 @@ $( function () {
 	$('a.setprivatebutton').button({ icons : { primary : "ui-icon-folder-collapsed" }, text : false });
 	$('a.editbutton').button({ icons : { primary : "ui-icon-pencil" }, text : false });
 	$('a.downloadbutton').button({ icons : { primary : "ui-icon-arrowthickstop-1-s" }, text : false });
+	$('a.shared_downloadbutton').button({ icons : { primary : "ui-icon-arrowthickstop-1-s" }, text : true });
 	$('a.sharebutton').button({ icons : { primary : "ui-icon-person" }, text : false });
 	$('a.notifybutton').button({ icons : { primary : "ui-icon-info" }, text : false })
 });

@@ -141,7 +141,7 @@ a {
 }
 
 .asset_list {
-	padding:20px 0;
+	padding:20px 0 0 0;
 }
 .asset_details_title {
 	font-weight:normal;

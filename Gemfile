@@ -9,6 +9,8 @@ group :default do
   gem 'acts_as_tree'
   gem 'jquery-rails'
   gem 'declarative_authorization'
+  gem 'rubyzip'
+  gem 'uuidtools'
 end
 
 group :developmant, :test do

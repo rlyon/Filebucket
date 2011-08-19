@@ -18,6 +18,9 @@
 		</div>
 		<% if !@public_view %>
 		<div class="actions">
+			<% if user_signed_in? %>
+				<%= link_to "Download", download_folder_path(folder), :confirm => "Depending on the size and quantity of the files in this folder, it could take alot of time before the download begins", :class => "downloadbutton" %>
+			<% end %>
 			<% if folder.parent.nil? and folder.public? %>
 				<%= link_to "Set Private", publicize_path(folder), :class => "setprivatebutton" unless @is_this_folder_being_shared %>
 			<% elsif folder.parent.nil? %>

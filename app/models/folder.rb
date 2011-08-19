@@ -1,3 +1,4 @@
+require 'zip/zip'
 class Folder < ActiveRecord::Base
 	acts_as_tree
 	belongs_to :user
@@ -50,20 +51,24 @@ class Folder < ActiveRecord::Base
   end
   
   def zip
-    if self.zipped_file.nil?
-      self.zipped_file = "/tmp/uploader/#{SecureRandom.hex(32)}.zip"
+    if !FileTest::directory?("/mnt/filebox/assets/zipfile_repository")
+      Dir::mkdir("/mnt/filebox/assets/zipfile_repository")
+    end
+    if self.zipped_file.nil? or !File.file?(self.zipped_file)
+      logger.info("[ZIP] Creating zipfile for #{self.name}")
+      self.zipped_file = "/mnt/filebox/assets/zipfile_repository/#{SecureRandom.hex(32)}.zip"
       self.zipped_at = Time.now
       self.save!
       self._zip
     else
       # Check for modifications and rebuild if newer
       unless self.updated_at >= self.zipped_at
-        logger.info("Rebuilding zipfile for #{self.name}")
+        logger.info("[ZIP] Rebuilding zipfile for #{self.name}")
         self._zip
       end
     end
     
-    self.zipped_file
+    return self.zipped_file
     
   end
 
@@ -71,8 +76,9 @@ protected
   def _zip
     Zip::ZipOutputStream.open(self.zipped_file) do |z|
       self.assets.each do |asset|
-        z.put_next_entry(asset.name)
-        z.print IO.read(asset.file.url)
+        logger.info("[ZIP] Adding #{asset.file_name} in #{asset.uploaded_file.path}")
+        z.put_next_entry(asset.file_name)
+        z.print IO.read(asset.uploaded_file.path)
       end
     end
   end

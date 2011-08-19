@@ -162,4 +162,17 @@ class FoldersController < ApplicationController
     end
   end
 	
+	def get
+	  if current_user
+		  folder = current_user.folders.find_by_id(params[:id])
+		  # two queries is pretty shitty
+		  folder ||= Folder.find(params[:id]) if current_user.has_share_access?(Folder.find(params[:id]))
+		end
+		unless folder.nil?
+			send_file folder.zip, :type => "application/zip", :filename => folder.name
+		else
+			flash[:error] = "You can't access folders that don't belong to you!"
+			redirect_to root_url
+		end
+  end
 end

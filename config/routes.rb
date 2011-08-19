@@ -10,6 +10,7 @@ Filebox::Application.routes.draw do
   devise_for :users
   
   match "download/:id" => "assets#get", :as => "download"
+  match "download_folder/:id" => "folders#get", :as => "download_folder"
    
   match "folders/share" => "folders#share"
   match "folders/unshare" => "folders#unshare"

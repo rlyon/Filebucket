@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110518023208) do
+ActiveRecord::Schema.define(:version => 20110818232057) do
 
   create_table "assets", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20110518023208) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "zipped_file"
+    t.datetime "zipped_at"
   end
 
   add_index "folders", ["parent_id"], :name => "index_folders_on_parent_id"
