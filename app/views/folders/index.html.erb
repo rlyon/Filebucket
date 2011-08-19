@@ -5,6 +5,11 @@
   and should not be used for long term storage <i>(yet)</i>. 
 </p>
 <br />
+<p>
+	Login requires a secure connection.  To avoid warnings from your browser you can download our
+	<%= link_to "root certificate here", "/ibestCA.crt" %> and install it on your system as a trusted
+	certificate.  Our revocation list is also available <%= link_to "here", "/ibestCA.crl" %>.
+</p>
 <br />
 <br />
 <% else %>
