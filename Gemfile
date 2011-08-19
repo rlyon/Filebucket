@@ -11,6 +11,7 @@ group :default do
   gem 'declarative_authorization'
   gem 'rubyzip'
   gem 'uuidtools'
+  gem 'rack-ssl-enforcer'
 end
 
 group :developmant, :test do
