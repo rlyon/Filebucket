@@ -1,5 +1,5 @@
 <% title "Adding keys to '#{@folder.name}" %>
-<% form_tag keyed_folder_path, :method => :put do %>
+<%= form_tag keyed_folder_path, :method => :put do %>
 	<%= hidden_field_tag 'folder_id', @folder.id %>
 	<h4>Keys that are not yet assigned to the folder (check to add)</h4>
 	<p>
