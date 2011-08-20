@@ -1,5 +1,5 @@
 class FoldersController < ApplicationController
-	before_filter :authenticate_user!, :except => [ 'index' ] 
+	before_filter :authenticate_user!, :except => [ :index, :get ] 
 	@public_view = false
 	
 	def index
@@ -167,11 +167,14 @@ class FoldersController < ApplicationController
 		  folder = current_user.folders.find_by_id(params[:id])
 		  # two queries is pretty shitty
 		  folder ||= Folder.find(params[:id]) if current_user.has_share_access?(Folder.find(params[:id]))
+		elsif current_key
+		  folder = current_key.folders.find(params[:id]) if current_key
 		end
+		
 		unless folder.nil?
 			send_file folder.zip, :type => "application/zip", :filename => "#{folder.name}.zip"
 		else
-			flash[:error] = "You can't access folders that don't belong to you!"
+			flash[:error] = "You are not authorized to download this folder"
 			redirect_to root_url
 		end
   end

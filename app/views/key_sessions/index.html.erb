@@ -6,7 +6,7 @@
 <% @folders.each do |folder| %>
 <div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
 	<div class="file_name">
-		<%= link_to folder.name, keyauth_download_path(folder) %>
+		<%= link_to folder.name, download_folder_path(folder) %>
 		-
 		<i>(Shared by: <%= folder.user.name %>)</i>
 	</div>
@@ -15,7 +15,7 @@
 	<div class="file_last_updated">
 	</div>
 	<div class="actions">
-		<%= link_to "Download the folder", keyauth_download_path(folder), :confirm => "Depending on the size and quantity of the files in this folder, it could take alot of time before the download begins", :class => "shared_downloadbutton" %>
+		<%= link_to "Download the folder", download_folder_path(folder), :confirm => "Depending on the size and quantity of the files in this folder, it could take alot of time before the download begins", :class => "shared_downloadbutton" %>
 	</div>
 </div>
 <% end %>
