@@ -2,7 +2,7 @@ require 'zip/zipfilesystem'
 class Folder < ActiveRecord::Base
 	acts_as_tree
 	belongs_to :user
-	has_many :keyed_folders
+	has_many :keyed_folders, :dependent => :destroy
 	has_many :keys, :through => :keyed_folders
 	has_many :assets, :dependent => :destroy
 	has_many :shared_folders, :dependent => :destroy
@@ -50,6 +50,10 @@ class Folder < ActiveRecord::Base
     end
     email_addresses
   end
+
+  def total_size
+    self._total_size(self, 0)
+  end
   
   def zip
     if !FileTest::directory?("/mnt/filebox/assets/zipfile_repository")
@@ -71,8 +75,18 @@ class Folder < ActiveRecord::Base
     
     return self.zipped_file
   end
-
+  
 protected
+  def _total_size(folder, size)
+    folder.assets.each do |a|
+      size = size + a.file_size
+    end
+    folder.children.each do |f|
+      size = _total_size(f,size)
+    end
+    return size
+  end
+  
   def _zip
     Zip::ZipFile.open(self.zipped_file, Zip::ZipFile::CREATE) do |z|
       self._zip_decender(z,self,nil)
@@ -95,5 +109,4 @@ protected
       _zip_decender(zipstream, f, path)
     end
   end
-
 end
