@@ -1,6 +1,6 @@
 class Key < ActiveRecord::Base 
   belongs_to :user
-  has_many :keyed_folders
+  has_many :keyed_folders, :dependent => :destroy
   has_many :folders, :through => :keyed_folders
   
   validates :name, :presence => true
