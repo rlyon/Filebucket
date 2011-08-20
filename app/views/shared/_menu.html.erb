@@ -22,12 +22,10 @@
 		</li>
 		<% end %>
 		<li>
-			<%= link_to "Invite", invites_path %>
+			<%= link_to "Access Keys", keys_path %>
 		</li>
-		<% end %>
-		<% unless user_signed_in? %>
 		<li>
-			<%= link_to "Key Login", keyauth_login_path %>
+			<%= link_to "Invite", invites_path %>
 		</li>
 		<% end %>
 		<li>
