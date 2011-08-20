@@ -1,8 +1,9 @@
-require 'zip/zip'
+require 'zip/zipfilesystem'
 class Folder < ActiveRecord::Base
 	acts_as_tree
 	belongs_to :user
-	#has_many :keys, :dependent => :destroy
+	has_many :keyed_folders
+	has_many :keys, :through => :keyed_folders
 	has_many :assets, :dependent => :destroy
 	has_many :shared_folders, :dependent => :destroy
 	has_many :public_folders, :dependent => :destroy
@@ -69,17 +70,29 @@ class Folder < ActiveRecord::Base
     end
     
     return self.zipped_file
-    
   end
 
 protected
   def _zip
-    Zip::ZipOutputStream.open(self.zipped_file) do |z|
-      self.assets.each do |asset|
-        logger.info("[ZIP] Adding #{asset.file_name} in #{asset.uploaded_file.path}")
-        z.put_next_entry(asset.file_name)
-        z.print IO.read(asset.uploaded_file.path)
-      end
+    Zip::ZipFile.open(self.zipped_file, Zip::ZipFile::CREATE) do |z|
+      self._zip_decender(z,self,nil)
+    end
+  end
+  
+  def _zip_decender(zipstream, folder, path)
+    if path.nil?
+      path = folder.name
+    else
+      path = path + "/" + folder.name
+    end
+    zipstream.dir.mkdir(path)
+    
+    folder.assets.each do |a|
+      logger.info("[ZIP] Adding #{a.file_name} in #{a.uploaded_file.path}")
+      zipstream.add("#{path}/#{a.file_name}", a.uploaded_file.path)
+    end
+    folder.children.each do |f|
+      _zip_decender(zipstream, f, path)
     end
   end
 
