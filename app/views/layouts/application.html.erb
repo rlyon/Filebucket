@@ -3,9 +3,8 @@
 	<head>
 		<title>IBEST Filebucket | <%= content_for?(:title) ? yield(:title) : "Data sharing project" %></title>
 		
-		<%= stylesheet_link_tag "jquery.fileupload-ui", "application", "black-tie/jquery-ui-1.8.15.custom" %>
-		
-		<%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.15.custom.min" %>
+		<%= stylesheet_link_tag "jquery.fileupload-ui", "application", "black-tie/jquery-ui-1.8.15.custom", "ui.dynatree" %>		
+		<%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.15.custom.min", "jquery.dynatree.min" %>
 		<%= javascript_include_tag "application" %>
 		<%= javascript_include_tag "rails" %>
 		
@@ -26,6 +25,10 @@
 					<%= link_to "Edit account", edit_user_registration_path %>
 					|
 					<%= link_to "Sign out", destroy_user_session_path %>
+					<% elsif key_signed_in? %>
+					<i><%= distance_of_time_in_words(Time.now, current_key.expires_at) %> until expiration</i>
+					|
+					<%= link_to "Sign out", keyauth_logout_path %>
 					<% else %>
 					<em>Not Signed in.</em>
 					<%= link_to 'Sign in', new_user_session_path%>
@@ -44,6 +47,7 @@
 				<%= yield %>
 			</div>
 		</div>
+		<%= render :partial => "shared/buttonhelp" %>
 		<div id="footer"> 
 			Copyright &copy; 2011, All rights reserved - Initiative for
 			Bioinformatics and Evolutionary Studies. <br /> 

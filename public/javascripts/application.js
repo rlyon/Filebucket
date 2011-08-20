@@ -34,7 +34,7 @@ $( function () {
 		return false;
 	});
 
-	$( "a.notify" ).button({ icons : { primary : "ui-icon-info" }, text : false })
+	$( "a.notify" ).button({ icons : { primary : "ui-icon-comment" }, text : false })
 	.click( function() {
 		var a = this;
 		$("#notification_form").attr("title", "Notify users of changes to '" + $(a).attr("folder_name") + "'" );
@@ -68,11 +68,14 @@ $( function () {
 	$( ".upload a" ).button();
 	
 	$('a.deletebutton').button({ icons : { primary : "ui-icon-close" }, text : false });
-	$('a.setpublicbutton').button({ icons : { primary : "ui-icon-folder-open" }, text : false });
-	$('a.setprivatebutton').button({ icons : { primary : "ui-icon-folder-collapsed" }, text : false });
+	$('a.setpublicbutton').button({ icons : { primary : "ui-icon-folder-collapsed" }, text : false });
+	$('a.setprivatebutton').button({ icons : { primary : "ui-icon-folder-open" }, text : false });
 	$('a.editbutton').button({ icons : { primary : "ui-icon-pencil" }, text : false });
 	$('a.downloadbutton').button({ icons : { primary : "ui-icon-arrowthickstop-1-s" }, text : false });
 	$('a.shared_downloadbutton').button({ icons : { primary : "ui-icon-arrowthickstop-1-s" }, text : true });
 	$('a.sharebutton').button({ icons : { primary : "ui-icon-person" }, text : false });
-	$('a.notifybutton').button({ icons : { primary : "ui-icon-info" }, text : false })
+	$('a.notifybutton').button({ icons : { primary : "ui-icon-comment" }, text : false })
+	$('a.createkeybutton').button({ icons : { primary : "ui-icon-plusthick" }, text : true });
+	$('a.infobutton').button({ icons : { primary : "ui-icon-info" }, text : false });
+	$('a.keybutton').button({ icons : { primary : "ui-icon-key" }, text : false });
 });

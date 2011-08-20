@@ -1,0 +1,19 @@
+<% title "Adding keys to '#{@folder.name}" %>
+<% form_tag keyed_folder_path, :method => :put do %>
+	<%= hidden_field_tag 'folder_id', @folder.id %>
+	<h4>Keys that are not yet assigned to the folder (check to add)</h4>
+	<p>
+	<% @not_assigned_keys.each do |key| %>
+		<%= check_box_tag "assign_keys[]", key.id %> <%= key.name %> (<%= key.email %>)<br />
+	<% end %>
+	</p>
+	<h4>Keys that are assigned to the folder (check to remove)</h4>
+	<p>
+	<% @assigned_keys.each do |key| %>
+		<%= check_box_tag "remove_keys[]", key.id %> <%= key.name %> (<%= key.email %>)<br />
+	<% end %>
+	</p>
+	<p>
+		<%= submit_tag "Update keys" %>
+	</p>
+<% end %>

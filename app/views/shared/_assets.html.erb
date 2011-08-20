@@ -1,4 +1,4 @@
-<div class="asset_list">
+<div class="keys asset_list">
 <% if @folders.empty? and @assets.empty? %>
 	<p><i>Empty</i></p>
 	<p>
@@ -11,6 +11,5 @@
 	<%= render :partial => "shared/folder_details" %>
 	<%= render :partial => "shared/asset_details" %>
 	<%= render :partial => "shared/shared_folder_details" %>
-	<%= render :partial => "shared/buttonhelp" %>
 <% end %>
 </div> <!-- Asset list -->

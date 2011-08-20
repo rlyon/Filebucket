@@ -1,4 +1,6 @@
 <div id="buttonhelp">
+<% if user_signed_in? %>
+<h4>Button Legend</h4>
 <table width="100%">
 <tr>
 <td><%= link_to "Download", "#", :class => "downloadbutton" %> Download file or folder</td>
@@ -12,6 +14,11 @@
 </tr>
 <tr>
 <td><%= link_to "Notify", "#", :class => "notifybutton" %> Notify users sharing the folder</td>
+<td><%= link_to "Information", "#", :class => "infobutton" %> Additional information on the item</td>
+<td><%= link_to "Add Folders to Key", "#", :class => "keybutton" %> Add folders to a key</td>
 </tr>
 </table>
+<% else %>
+<h3>Please log in to access your files</h3>
+<% end %>
 </div>

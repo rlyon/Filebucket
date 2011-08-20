@@ -1,15 +1,28 @@
 <%= form_for @key do |f| %>
- <%= f.error_messages %>
- <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
- </p>
- <p>
-		<%= f.label :expire %>
-		<%= f.date_select :expire %>
- </p>
-   <%= f.hidden_field :folder_id %>
- <p>
-   <%= f.submit "Generate Key" %>
-</p>
+	<%= f.error_messages %>
+	<% if @key.auth %>
+	<p>
+		<b>The authorization string for this key is:</b> <br />
+		<%= @key.auth %>
+	</p>
+	<p>
+		<b><i>To use this key, send the authorization key to an individual and have them log into //this path//.  
+		They will need to enter the email address associated with the key and the key into the form.</i></b>
+	</p>
+	<% end %>
+	<p>
+		<%= f.label :name, "Enter a descriptive name for the key:" %><br />
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :email, "Enter the email address assigned to this key:" %><br />
+		<%= f.text_field :email %>
+	</p>
+	<p>
+		<%= f.label :expires_at, "Enter the expiration date for this key:" %><br />
+		<%= f.date_select :expires_at %>
+	</p>
+	<p>
+		<%= f.submit "Save the access key" %>
+	</p>
 <% end %>

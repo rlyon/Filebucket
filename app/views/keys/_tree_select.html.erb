@@ -1,0 +1,7 @@
+<% folders.each do |folder| %>
+{title: "<%= folder.name %>", isFolder: true, key: "<%= folder.id %>"
+<% unless folder.children.empty? %>
+,children: [<%= render :partial => "tree_select", :locals => { :folders => folder.children } %>]
+<% end %>
+},
+<% end %>

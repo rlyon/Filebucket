@@ -1,0 +1,15 @@
+<% title "Access folders using your key" %>
+
+<%= form_tag key_sessions_path do %>
+	<p>
+		<label>Enter your email address:</label><br />
+		<%= text_field_tag 'email', nil, :size => 40 %>
+	</p>
+	<p>
+		<label>Enter your authorization key:</label><br />
+		<%= text_area_tag 'auth', nil, :size => "40x10" %>
+	</p>
+	<p>
+		<%= submit_tag "Authorize" %>
+	</p>
+<% end %>

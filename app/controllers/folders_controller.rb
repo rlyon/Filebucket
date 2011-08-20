@@ -50,10 +50,10 @@ class FoldersController < ApplicationController
 
 		if @folder.save
 			if @folder.parent
-                                @path = folder_path(@folder.parent)
-                        else
-                                 @path = root_url
-                        end
+        @path = folder_path(@folder.parent)
+      else
+        @path = root_url
+      end
 			redirect_to @path, :notice => "Created new folder"
 		else
 			render 'new'

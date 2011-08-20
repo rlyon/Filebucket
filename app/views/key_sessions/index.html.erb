@@ -1,0 +1,26 @@
+<% title "Available folders" %>
+
+<% unless @folders.empty? %>
+
+<div id="asset_list">
+<% @folders.each do |folder| %>
+<div class="asset_details <%= folder.shared? ? 'shared_folder' : 'folder' %>" id="folder_<%= folder.id %>">
+	<div class="file_name">
+		<%= link_to folder.name, keyauth_download_path(folder) %>
+		-
+		<i>(Shared by: <%= folder.user.name %>)</i>
+	</div>
+	<div class="file_size">
+	</div>
+	<div class="file_last_updated">
+	</div>
+	<div class="actions">
+		<%= link_to "Download the folder", keyauth_download_path(folder), :confirm => "Depending on the size and quantity of the files in this folder, it could take alot of time before the download begins", :class => "shared_downloadbutton" %>
+	</div>
+</div>
+<% end %>
+</div>
+
+<% else %>
+	<p><i>There are no folders available to this key.</i></p>
+<% end %>

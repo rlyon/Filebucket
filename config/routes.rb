@@ -5,9 +5,15 @@ Filebox::Application.routes.draw do
   resources :public_folders
   resources :invites
   resources :keys
-  #resources :home
-
+  resources :keyed_folders, :except => [:index]
+  resources :key_sessions
+  
   devise_for :users
+  
+  get "/keyauth/login" => "key_sessions#new", :as => "keyauth_login"
+  get "/keyauth/logout" => "key_sessions#destroy", :as => "keyauth_logout"
+  get "/keyauth/folders" => "key_sessions#index", :as => "keyauth_folders"
+  get "/keyauth/download/:id" => "key_sessions#index", :as => "keyauth_download" 
   
   match "download/:id" => "assets#get", :as => "download"
   match "download_folder/:id" => "folders#get", :as => "download_folder"

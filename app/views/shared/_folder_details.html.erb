@@ -18,6 +18,7 @@
 		</div>
 		<% if !@public_view %>
 		<div class="actions">
+			<%= link_to "Add to Key", edit_keyed_folder_path(folder), :class => "keybutton" unless @is_this_folder_being_shared %>
 			<% if folder.parent.nil? and folder.public? %>
 				<%= link_to "Set Private", publicize_path(folder), :class => "setprivatebutton" unless @is_this_folder_being_shared %>
 			<% elsif folder.parent.nil? %>

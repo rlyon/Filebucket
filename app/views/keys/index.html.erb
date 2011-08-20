@@ -1,9 +1,26 @@
-<% @keys.each do |key| %>
-	<p>
-		<%= key.name %> | 
-	  <%= link_to "Remove", key, :confirm => 'Are you sure?', :method => :delete %>
-	</p>
-<% end %>
+<p>
+	<%= link_to "Create a new access key", new_key_path, :class => "createkeybutton" %>
+</p>
 
-<%= link_to "New Key", new_key_path %>
-	
+<% unless @keys.empty? %>
+<div class="asset_list">
+<div class="asset_list_header">
+	<div class="key_name_header">Key name</div>
+	<div class="key_belongs_to_header">Belongs to</div>
+	<div class="key_expires_at_header">Expires on</div>
+</div>
+
+<% @keys.each do |key| %>
+<div class="asset_details key">
+	<div class="key_name"><%= link_to key.name, edit_key_path(key) %></div>
+	<div class="key_belongs_to"><%= key.email %></div>
+	<div class="key_expires_at"><%= key.expires_at %></div>
+	<div class="actions">
+		<%= link_to "Folder Information", "#", :class => "infobutton" %>
+		<%= link_to "Edit", edit_key_path(key), :class => "editbutton" %>
+		<%= link_to "Delete", key, :confirm => 'Are you sure you want to delete this key', :class => "deletebutton", :method => :delete %>
+	</div>
+</div>
+<% end %>
+</div>
+<% end %>

@@ -21,8 +21,12 @@ a {
 	width: 920px;
 	margin: 0 auto;
 	background-color: #FFF;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
+	//-moz-border-radius: 15px;
+	//border-radius: 15px;
+	-moz-border-radius-topright: 15px;
+	border-top-right-radius: 15px;
+	-moz-border-radius-topleft: 15px;
+	border-top-left-radius: 15px;
 }
 
 #footer {
@@ -138,6 +142,22 @@ a {
 
 .file_name_header, .file_size_header, .file_last_updated_header, .file_owner_header {
 	color: #ccc;
+}
+
+.key_name_header, .key_name {
+	width:250px;
+	float:left;
+	padding-left:30px;
+}
+
+.key_belongs_to_header, .key_belongs_to {
+	width:200px;
+	float:left;
+}
+
+.key_expires_at_header, .key_expires_at {
+	width:100px;
+	float:left;
 }
 
 .asset_list {
@@ -285,7 +305,15 @@ a {
 	background:url("../images/folder_shared.png") no-repeat scroll left center #DFF1FF;
 }
 
-.folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover, .folder_documents.asset_details:hover {
+.key.asset_details {
+	background:url("../images/key.png") no-repeat scroll left center transparent;
+}
+
+.key.asset_details:hover {
+	background:url("../images/key.png") no-repeat scroll left center #DFF1FF;
+}
+
+.key.asset_details:hover, .folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover, .folder_documents.asset_details:hover {
 	border:1px solid #DFDFDF;
 }
 
@@ -388,24 +416,43 @@ a.notify,
 a.notifybutton,
 a.downloadbutton,
 a.shared_downloadbutton,
+a.infobutton,
+a.keybutton,
 a.deletebutton {
 	margin-top: -10px; font-size: 10px; !important
 }
 
 #buttonhelp {
+	width: 920px;
 	background-color: #ddd; 
-	padding: 5px; 
-	margin-top: 30px; 
+	//padding: 5px;
+	margin: 0 auto;
 	display:block;
 	font-size: 11px;
 	color: #666;
-	opacity:0.8;
-	filter:alpha(opacity=80);
+	//opacity:0.8;
+	//filter:alpha(opacity=80);
+	-moz-border-radius-bottomright: 15px;
+	border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-left-radius: 15px;
 }
 
 #buttonhelp h4 {
 	font-size: 13px;
 	font-weight:bold;
+	padding: 5px;
+	margin: 0 0 10px 0;
+	text-align: center;
+	border-bottom: 1px dotted #aaa;
+}
+
+#buttonhelp h3 {
+	font-size: 13px;
+	font-weight:bold;
+	padding: 5px;
+	margin: 0 0 10px 0;
+	text-align: center;
 }
 
 #buttonhelp td {

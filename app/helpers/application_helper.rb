@@ -3,4 +3,8 @@ module ApplicationHelper
     options.reverse_merge!(:length => 30)
     text.truncate(options.delete(:length), options) if text
   end
+  
+  def treeify(folders)
+    
+  end
 end

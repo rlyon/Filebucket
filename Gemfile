@@ -12,6 +12,7 @@ group :default do
   gem 'rubyzip'
   gem 'uuidtools'
   gem 'rack-ssl-enforcer'
+  gem 'date_validator'
 end
 
 group :developmant, :test do
