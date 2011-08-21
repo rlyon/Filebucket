@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: UserMailer</title>
+
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./app/mailers/user_mailer_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="app/mailers/user_mailer.rb">app/mailers/user_mailer.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">ActionMailer::Base</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-invitation_notice_to_admin">#invitation_notice_to_admin</a></li>
+          
+          <li><a href="#method-i-invitation_to_join">#invitation_to_join</a></li>
+          
+          <li><a href="#method-i-invitation_to_share">#invitation_to_share</a></li>
+          
+          <li><a href="#method-i-notify_shared_folder_owner">#notify_shared_folder_owner</a></li>
+          
+          <li><a href="#method-i-notify_shared_folder_user">#notify_shared_folder_user</a></li>
+          
+          <li><a href="#method-i-share_notice_to_admin">#share_notice_to_admin</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./ErrorMessagesHelper.html">ErrorMessagesHelper</a></li>
+        
+          <li><a href="./ErrorMessagesHelper/FormBuilderAdditions.html">ErrorMessagesHelper::FormBuilderAdditions</a></li>
+        
+          <li><a href="./ApplicationController.html">ApplicationController</a></li>
+        
+          <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+        
+          <li><a href="./Asset.html">Asset</a></li>
+        
+          <li><a href="./AssetsController.html">AssetsController</a></li>
+        
+          <li><a href="./AssetsHelper.html">AssetsHelper</a></li>
+        
+          <li><a href="./Folder.html">Folder</a></li>
+        
+          <li><a href="./FoldersController.html">FoldersController</a></li>
+        
+          <li><a href="./FoldersHelper.html">FoldersHelper</a></li>
+        
+          <li><a href="./HomeController.html">HomeController</a></li>
+        
+          <li><a href="./HomeHelper.html">HomeHelper</a></li>
+        
+          <li><a href="./Invite.html">Invite</a></li>
+        
+          <li><a href="./InvitesController.html">InvitesController</a></li>
+        
+          <li><a href="./InvitesHelper.html">InvitesHelper</a></li>
+        
+          <li><a href="./Key.html">Key</a></li>
+        
+          <li><a href="./KeySessionsController.html">KeySessionsController</a></li>
+        
+          <li><a href="./KeySessionsHelper.html">KeySessionsHelper</a></li>
+        
+          <li><a href="./KeyedFolder.html">KeyedFolder</a></li>
+        
+          <li><a href="./KeyedFoldersController.html">KeyedFoldersController</a></li>
+        
+          <li><a href="./KeyedFoldersHelper.html">KeyedFoldersHelper</a></li>
+        
+          <li><a href="./KeysController.html">KeysController</a></li>
+        
+          <li><a href="./KeysHelper.html">KeysHelper</a></li>
+        
+          <li><a href="./LayoutHelper.html">LayoutHelper</a></li>
+        
+          <li><a href="./NotInvitedValidator.html">NotInvitedValidator</a></li>
+        
+          <li><a href="./NotMemberValidator.html">NotMemberValidator</a></li>
+        
+          <li><a href="./PublicFolder.html">PublicFolder</a></li>
+        
+          <li><a href="./PublicFolderHelper.html">PublicFolderHelper</a></li>
+        
+          <li><a href="./PublicFoldersController.html">PublicFoldersController</a></li>
+        
+          <li><a href="./SharedFolder.html">SharedFolder</a></li>
+        
+          <li><a href="./SharedFoldersController.html">SharedFoldersController</a></li>
+        
+          <li><a href="./SharedFoldersHelper.html">SharedFoldersHelper</a></li>
+        
+          <li><a href="./User.html">User</a></li>
+        
+          <li><a href="./UserMailer.html">UserMailer</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">UserMailer</h1>
+
+    <div id="description" class="description">
+      
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="invitation_notice_to_admin-method" class="method-detail ">
+          <a name="method-i-invitation_notice_to_admin"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">invitation_notice_to_admin</span><span
+              class="method-args">(invitation)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="invitation_notice_to_admin-source">
+<pre>
+<span class="ruby-comment"># File app/mailers/user_mailer.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">invitation_notice_to_admin</span>(<span class="ruby-identifier">invitation</span>)
+  <span class="ruby-ivar">@invitation</span> = <span class="ruby-identifier">invitation</span>
+  <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;rlyon@uidaho.edu&quot;</span>,
+        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;[Filebox] Invitation sent.&quot;</span> )
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- invitation_notice_to_admin-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- invitation_notice_to_admin-method -->
+
+      
+        <div id="invitation_to_join-method" class="method-detail ">
+          <a name="method-i-invitation_to_join"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">invitation_to_join</span><span
+              class="method-args">(invitation)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="invitation_to_join-source">
+<pre>
+<span class="ruby-comment"># File app/mailers/user_mailer.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">invitation_to_join</span>(<span class="ruby-identifier">invitation</span>)
+  <span class="ruby-ivar">@invitation</span> = <span class="ruby-identifier">invitation</span>
+  <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@invitation</span>.<span class="ruby-identifier">invited_user_email</span>,
+        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{@invitation.user.name} has invited you to the IBEST Filebox&quot;</span> )
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- invitation_to_join-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- invitation_to_join-method -->
+
+      
+        <div id="invitation_to_share-method" class="method-detail ">
+          <a name="method-i-invitation_to_share"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">invitation_to_share</span><span
+              class="method-args">(shared_folder)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="invitation_to_share-source">
+<pre>
+<span class="ruby-comment"># File app/mailers/user_mailer.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">invitation_to_share</span>(<span class="ruby-identifier">shared_folder</span>)
+  <span class="ruby-ivar">@shared_folder</span> = <span class="ruby-identifier">shared_folder</span>
+  <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@shared_folder</span>.<span class="ruby-identifier">shared_email</span>, 
+        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{@shared_folder.user.name} wants to share '#{@shared_folder.folder.name}' folder with you&quot;</span> )
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- invitation_to_share-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- invitation_to_share-method -->
+
+      
+        <div id="notify_shared_folder_owner-method" class="method-detail ">
+          <a name="method-i-notify_shared_folder_owner"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">notify_shared_folder_owner</span><span
+              class="method-args">(shared_folder,email_addresses)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="notify_shared_folder_owner-source">
+<pre>
+<span class="ruby-comment"># File app/mailers/user_mailer.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notify_shared_folder_owner</span>(<span class="ruby-identifier">shared_folder</span>,<span class="ruby-identifier">email_addresses</span>)
+  <span class="ruby-ivar">@shared_folder</span> = <span class="ruby-identifier">shared_folder</span>
+  <span class="ruby-ivar">@email_addresses</span> = <span class="ruby-identifier">email_addresses</span>
+  <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@shared_folder</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>,
+        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Folder notification confirmation&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- notify_shared_folder_owner-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- notify_shared_folder_owner-method -->
+
+      
+        <div id="notify_shared_folder_user-method" class="method-detail ">
+          <a name="method-i-notify_shared_folder_user"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">notify_shared_folder_user</span><span
+              class="method-args">(shared_folder,email,message)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="notify_shared_folder_user-source">
+<pre>
+<span class="ruby-comment"># File app/mailers/user_mailer.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notify_shared_folder_user</span>(<span class="ruby-identifier">shared_folder</span>,<span class="ruby-identifier">email</span>,<span class="ruby-identifier">message</span>)
+  <span class="ruby-ivar">@shared_folder</span> = <span class="ruby-identifier">shared_folder</span>
+  <span class="ruby-ivar">@message</span> = <span class="ruby-identifier">message</span>
+  <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">email</span>,
+        <span class="ruby-value">:reply_to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@shared_folder</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>,
+        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{@shared_folder.user.name} has updated #{@shared_folder.name}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- notify_shared_folder_user-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- notify_shared_folder_user-method -->
+
+      
+        <div id="share_notice_to_admin-method" class="method-detail ">
+          <a name="method-i-share_notice_to_admin"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">share_notice_to_admin</span><span
+              class="method-args">(shared_folder)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="share_notice_to_admin-source">
+<pre>
+<span class="ruby-comment"># File app/mailers/user_mailer.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">share_notice_to_admin</span>(<span class="ruby-identifier">shared_folder</span>)
+  <span class="ruby-ivar">@shared_folder</span> = <span class="ruby-identifier">shared_folder</span>
+  <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;rlyon@uidaho.edu&quot;</span>,
+        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;[Filebox] Share request generated.&quot;</span> )
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- share_notice_to_admin-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- share_notice_to_admin-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

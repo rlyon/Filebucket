@@ -1,3 +1,5 @@
+# Access keys attached to specific email addresses.  Generates authorization strings that
+# can be used to authenticate to the filebucket and download zipped folders
 class Key < ActiveRecord::Base 
   belongs_to :user
   has_many :keyed_folders, :dependent => :destroy
@@ -10,6 +12,7 @@ class Key < ActiveRecord::Base
   before_save :generate_auth
   
   private
+  # Generate the authorization key
   def generate_auth
     self.auth = SecureRandom.hex(32)
   end

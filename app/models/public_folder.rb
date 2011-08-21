@@ -1,3 +1,4 @@
+# Public folders.
 class PublicFolder < ActiveRecord::Base
   belongs_to :user
   belongs_to :folder

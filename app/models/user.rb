@@ -1,3 +1,4 @@
+# Account holders able to access all standard filebucket functionality.
 class User < ActiveRecord::Base
 	has_many :assets
 	has_many :folders
@@ -32,6 +33,8 @@ class User < ActiveRecord::Base
   after_create :check_and_assign_shared_ids_to_shared_folders
   after_create :activate_if_invited
 
+  # Once a user is created a check is made to update the shared_folders table with the user_id that
+  # has been created
   def check_and_assign_shared_ids_to_shared_folders
     shared_folders_with_same_email = SharedFolder.find_all_by_shared_email(self.email)
     if ! shared_folders_with_same_email.empty?
@@ -47,6 +50,7 @@ class User < ActiveRecord::Base
     end    
   end
   
+  # Bypass the admin activation if the user has been invited to join.
   def activate_if_invited
     invited_user = Invite.find_by_invited_user_email(self.email)
     if ! invited_user.nil?
@@ -56,6 +60,7 @@ class User < ActiveRecord::Base
     end
   end
   
+  # Check if the user has shared access to the folder.
   def has_share_access?(folder)
     return false if folder.nil?
     return true if self.folders.include?(folder)
@@ -73,6 +78,8 @@ class User < ActiveRecord::Base
     return false
   end
   
+  # Override the devise authentication method to check if the account has been
+  # activated by an administrator.
   def active_for_authentication?
     # logger.debug self.to_yaml
     super && account_active?
