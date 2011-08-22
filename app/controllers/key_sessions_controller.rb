@@ -30,7 +30,7 @@ class KeySessionsController < ApplicationController
   end
   
   def destroy
-    session['key_id'] = nil
+    session['access_key_id'] = nil
     redirect_to root_url, :notice => "Your key has been logged out."
   end
   
