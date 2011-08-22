@@ -3,7 +3,7 @@
 class AccessKey < ActiveRecord::Base 
   belongs_to :user
   has_many :keyed_folders, :dependent => :destroy
-  has_many :folders, :through => :keyed_folders
+  has_many :folders, :through => :keyed_folders, :readonly => false
   
   validates :name, :presence => true
   validates :email, :presence => true
