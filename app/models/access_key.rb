@@ -11,6 +11,16 @@ class AccessKey < ActiveRecord::Base
   
   before_save :generate_auth
   
+  def authenticate(email,auth)
+    @key ||= AccessKey.find(:first, :conditions => ["email = ? AND auth = ?", email, auth])
+    if @key.expires_at < Time.now
+      return nil
+    else
+      return @key
+    end
+    return nil
+  end
+  
   private
   # Generate the authorization key
   def generate_auth

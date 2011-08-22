@@ -12,7 +12,9 @@ Filebucket::Application.routes.draw do
   
   get "/keyauth/login" => "key_sessions#new", :as => "keyauth_login"
   get "/keyauth/logout" => "key_sessions#destroy", :as => "keyauth_logout"
-  get "/keyauth/folders" => "key_sessions#index", :as => "keyauth_folders" 
+  get "/keyauth/folders" => "key_sessions#index", :as => "keyauth_folders"
+  
+  match '/user' => "folders#index", :as => :user_root
   
   match "download/:id" => "assets#get", :as => "download"
   match "download_folder/:id" => "folders#get", :as => "download_folder"
