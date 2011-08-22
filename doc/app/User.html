@@ -112,6 +112,12 @@
         
           <li><a href="./ErrorMessagesHelper/FormBuilderAdditions.html">ErrorMessagesHelper::FormBuilderAdditions</a></li>
         
+          <li><a href="./AccessKey.html">AccessKey</a></li>
+        
+          <li><a href="./AccessKeysController.html">AccessKeysController</a></li>
+        
+          <li><a href="./AccessKeysHelper.html">AccessKeysHelper</a></li>
+        
           <li><a href="./ApplicationController.html">ApplicationController</a></li>
         
           <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
@@ -138,8 +144,6 @@
         
           <li><a href="./InvitesHelper.html">InvitesHelper</a></li>
         
-          <li><a href="./Key.html">Key</a></li>
-        
           <li><a href="./KeySessionsController.html">KeySessionsController</a></li>
         
           <li><a href="./KeySessionsHelper.html">KeySessionsHelper</a></li>
@@ -149,10 +153,6 @@
           <li><a href="./KeyedFoldersController.html">KeyedFoldersController</a></li>
         
           <li><a href="./KeyedFoldersHelper.html">KeyedFoldersHelper</a></li>
-        
-          <li><a href="./KeysController.html">KeysController</a></li>
-        
-          <li><a href="./KeysHelper.html">KeysHelper</a></li>
         
           <li><a href="./LayoutHelper.html">LayoutHelper</a></li>
         
@@ -236,7 +236,7 @@
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">invited_user</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">invited_user</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value">:invited_user_id</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">account_active</span> = <span class="ruby-value">1</span>
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save!</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- activate_if_invited-source -->
@@ -269,7 +269,7 @@ activated by an administrator.</p>
             
             <div class="method-source-code" id="active_for_authentication-3F-source">
 <pre>
-<span class="ruby-comment"># File app/models/user.rb, line 83</span>
+<span class="ruby-comment"># File app/models/user.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">active_for_authentication?</span>
   <span class="ruby-comment"># logger.debug self.to_yaml</span>
   <span class="ruby-keyword">super</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">account_active?</span>
@@ -306,9 +306,9 @@ with the user_id that has been created</p>
 <pre>
 <span class="ruby-comment"># File app/models/user.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">check_and_assign_shared_ids_to_shared_folders</span>
-  <span class="ruby-identifier">shared_folders_with_same_email</span> = <span class="ruby-constant">SharedFolder</span>.<span class="ruby-identifier">find_all_by_shared_email</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">email</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">shared_folders_with_same_email</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">shared_folders_with_same_email</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">shared_folder</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">shared_folders</span> = <span class="ruby-constant">SharedFolder</span>.<span class="ruby-identifier">find_all_by_shared_email</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">email</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">shared_folders</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">shared_folders</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">shared_folder</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">shared_folder</span>.<span class="ruby-identifier">shared_user_id</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>
       <span class="ruby-identifier">shared_folder</span>.<span class="ruby-identifier">save</span>
     <span class="ruby-keyword">end</span>
@@ -316,7 +316,7 @@ with the user_id that has been created</p>
     <span class="ruby-comment"># don't need administrative activation.</span>
     <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;ACTIVATING ACCOUNT: #{email} has shared folders&quot;</span>
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">account_active</span> = <span class="ruby-value">1</span>
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save!</span>
   <span class="ruby-keyword">end</span>    
 <span class="ruby-keyword">end</span></pre>
             </div><!-- check_and_assign_shared_ids_to_shared_folders-source -->
@@ -353,14 +353,10 @@ with the user_id that has been created</p>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">folder</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">folders</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">folder</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">shared_folders_by_others</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">folder</span>)
-  <span class="ruby-identifier">return_value</span> = <span class="ruby-keyword">false</span>
-
+  
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">folder</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">folder</span>.<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ancestor_folder</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">return_value</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">being_shared_folders</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">ancestor_folder</span>)
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">return_value</span> <span class="ruby-comment">#if it's true</span>
-        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
-      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">being_shared_folders</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">ancestor_folder</span>)
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>

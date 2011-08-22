@@ -5,7 +5,7 @@
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-  <title>Class: KeysController</title>
+  <title>Class: AccessKeysController</title>
 
   <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
 
@@ -34,8 +34,8 @@
         <div class="section-body">
           <ul>
           
-            <li><a href="./app/controllers/keys_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="app/controllers/keys_controller.rb">app/controllers/keys_controller.rb</a></li>
+            <li><a href="./app/controllers/access_keys_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="app/controllers/access_keys_controller.rb">app/controllers/access_keys_controller.rb</a></li>
           
           </ul>
         </div>
@@ -118,6 +118,12 @@
         
           <li><a href="./ErrorMessagesHelper/FormBuilderAdditions.html">ErrorMessagesHelper::FormBuilderAdditions</a></li>
         
+          <li><a href="./AccessKey.html">AccessKey</a></li>
+        
+          <li><a href="./AccessKeysController.html">AccessKeysController</a></li>
+        
+          <li><a href="./AccessKeysHelper.html">AccessKeysHelper</a></li>
+        
           <li><a href="./ApplicationController.html">ApplicationController</a></li>
         
           <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
@@ -144,8 +150,6 @@
         
           <li><a href="./InvitesHelper.html">InvitesHelper</a></li>
         
-          <li><a href="./Key.html">Key</a></li>
-        
           <li><a href="./KeySessionsController.html">KeySessionsController</a></li>
         
           <li><a href="./KeySessionsHelper.html">KeySessionsHelper</a></li>
@@ -155,10 +159,6 @@
           <li><a href="./KeyedFoldersController.html">KeyedFoldersController</a></li>
         
           <li><a href="./KeyedFoldersHelper.html">KeyedFoldersHelper</a></li>
-        
-          <li><a href="./KeysController.html">KeysController</a></li>
-        
-          <li><a href="./KeysHelper.html">KeysHelper</a></li>
         
           <li><a href="./LayoutHelper.html">LayoutHelper</a></li>
         
@@ -191,7 +191,7 @@
   </div>
 
   <div id="documentation">
-    <h1 class="class">KeysController</h1>
+    <h1 class="class">AccessKeysController</h1>
 
     <div id="description" class="description">
       
@@ -234,11 +234,11 @@
             
             <div class="method-source-code" id="create-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/keys_controller.rb, line 15</span>
+<span class="ruby-comment"># File app/controllers/access_keys_controller.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
-  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:key</span>])
+  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">access_keys</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:access_key</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@key</span>.<span class="ruby-identifier">save</span>
-    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">keys_path</span>, <span class="ruby-value">:notice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Created key&quot;</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">access_keys_path</span>, <span class="ruby-value">:notice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Created key&quot;</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">render</span> <span class="ruby-string">'new'</span>
   <span class="ruby-keyword">end</span>
@@ -272,12 +272,12 @@
             
             <div class="method-source-code" id="destroy-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/keys_controller.rb, line 42</span>
+<span class="ruby-comment"># File app/controllers/access_keys_controller.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">access_keys</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-ivar">@key</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-string">&quot;Successfully removed the key&quot;</span>
-  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">keys_path</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">access_keys_path</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- destroy-source -->
             
@@ -308,9 +308,9 @@
             
             <div class="method-source-code" id="edit-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/keys_controller.rb, line 24</span>
+<span class="ruby-comment"># File app/controllers/access_keys_controller.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
-  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">access_keys</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@key</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>, <span class="ruby-value">:error</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;You cannot edit keys that do not belong to you.&quot;</span>
   <span class="ruby-keyword">else</span>
@@ -346,9 +346,9 @@
             
             <div class="method-source-code" id="index-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/keys_controller.rb, line 3</span>
+<span class="ruby-comment"># File app/controllers/access_keys_controller.rb, line 3</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-  <span class="ruby-ivar">@keys</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">keys</span>
+  <span class="ruby-ivar">@keys</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">access_keys</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- index-source -->
             
@@ -379,9 +379,9 @@
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/keys_controller.rb, line 11</span>
+<span class="ruby-comment"># File app/controllers/access_keys_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">access_keys</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- new-source -->
             
@@ -412,9 +412,9 @@
             
             <div class="method-source-code" id="show-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/keys_controller.rb, line 7</span>
+<span class="ruby-comment"># File app/controllers/access_keys_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
-  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">access_keys</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
             </div><!-- show-source -->
             
@@ -445,11 +445,11 @@
             
             <div class="method-source-code" id="update-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/keys_controller.rb, line 33</span>
+<span class="ruby-comment"># File app/controllers/access_keys_controller.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">access_keys</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@key</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:key</span>])
-    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">keys_path</span>, <span class="ruby-value">:notice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Successfully updated the '#{@key.name}' key.&quot;</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">access_keys_path</span>, <span class="ruby-value">:notice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;Successfully updated the '#{@key.name}' key.&quot;</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">render</span> <span class="ruby-string">'edit'</span>
   <span class="ruby-keyword">end</span>

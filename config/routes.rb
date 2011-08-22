@@ -4,7 +4,7 @@ Filebucket::Application.routes.draw do
   resources :shared_folders
   resources :public_folders
   resources :invites
-  resources :keys
+  resources :access_keys
   resources :keyed_folders, :except => [:index]
   resources :key_sessions
   

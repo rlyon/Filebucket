@@ -1,1 +1,11 @@
 Filebucket is a web based file management utility.  You can upload, download and share files with other members.  Access keys can be set up to allow limited download access to zipped folders.  Installation instructions to follow shortly.
+
+git clone git://github.com/rlyon/filebucket.git
+cd filebucket
+bundle install
+# edit the database file
+rake db:migrate
+
+# Start up development webserver to try it out.
+rails s
+

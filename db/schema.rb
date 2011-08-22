@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821175831) do
+ActiveRecord::Schema.define(:version => 20110822153332) do
+
+  create_table "access_keys", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "auth"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+  end
 
   create_table "assets", :force => true do |t|
     t.integer  "user_id"
@@ -53,20 +63,10 @@ ActiveRecord::Schema.define(:version => 20110821175831) do
   add_index "invites", ["user_id"], :name => "index_invites_on_user_id"
 
   create_table "keyed_folders", :force => true do |t|
-    t.integer  "key_id"
+    t.integer  "access_key_id"
     t.integer  "folder_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "keys", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.string   "auth"
-    t.datetime "expires_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email"
   end
 
   create_table "public_folders", :force => true do |t|

@@ -11,8 +11,8 @@ class KeyedFoldersController < ApplicationController
 
   def edit
     @folder = current_user.folders.find(params[:id])
-    @assigned_keys = @folder.keys
-    @not_assigned_keys = current_user.keys - @assigned_keys
+    @assigned_keys = @folder.access_keys
+    @not_assigned_keys = current_user.access_keys - @assigned_keys
   end
 
   def update
@@ -22,7 +22,7 @@ class KeyedFoldersController < ApplicationController
     
     unless assign.nil?
       assign.each do |id|
-        k = KeyedFolder.new(:folder_id => folder.id, :key_id => id)
+        k = KeyedFolder.new(:folder_id => folder.id, :access_key_id => id)
         k.save!
       end
     end

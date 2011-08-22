@@ -19,9 +19,9 @@ class KeySessionsController < ApplicationController
   end
 
   def create
-    @key = Key.find(:first, :conditions => ["email == ? AND auth == ?", params[:email], params[:auth]])
+    @key = AccessKey.find(:first, :conditions => ["email == ? AND auth == ?", params[:email], params[:auth]])
     unless @key.nil?
-      session['key_id'] = @key.id
+      session['access_key_id'] = @key.id
       redirect_to keyauth_folders_path, :notice => "You are logged in.  This key is valid until #{@key.expires_at}."
     else
       flash[:error] = "Invalid email or key."
