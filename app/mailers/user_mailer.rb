@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "no_reply@filebox.ibest.uidaho.edu"
+  default :from => "no_reply@files.ibest.uidaho.edu"
   default :reply_to => "ibesthelp@uidaho.edu"
   
   def invitation_to_share(shared_folder)
@@ -11,19 +11,19 @@ class UserMailer < ActionMailer::Base
   def share_notice_to_admin(shared_folder)
     @shared_folder = shared_folder
     mail( :to => "rlyon@uidaho.edu",
-          :subject => "[Filebox] Share request generated." )
+          :subject => "[Filebucket] Share request generated." )
   end
   
   def invitation_to_join(invitation)
     @invitation = invitation
     mail( :to => @invitation.invited_user_email,
-          :subject => "#{@invitation.user.name} has invited you to the IBEST Filebox" )
+          :subject => "#{@invitation.user.name} has invited you to the IBEST Filebucket" )
   end
   
   def invitation_notice_to_admin(invitation)
     @invitation = invitation
     mail( :to => "rlyon@uidaho.edu",
-          :subject => "[Filebox] Invitation sent." )
+          :subject => "[Filebucket] Invitation sent." )
   end
   
   def notify_shared_folder_user(shared_folder,email,message)

@@ -1,4 +1,4 @@
-Sun, 21 Aug 2011 11:56:09 -0700
+Sun, 21 Aug 2011 17:40:17 -0700
 app/helpers/public_folder_helper.rb	Thu, 18 Aug 2011 06:59:11 -0700
 app/helpers/application_helper.rb	Thu, 18 Aug 2011 22:29:20 -0700
 app/controllers/shared_folders_controller.rb	Thu, 18 Aug 2011 06:59:11 -0700
@@ -24,7 +24,7 @@ app/controllers/invites_controller.rb	Thu, 18 Aug 2011 06:59:11 -0700
 app/helpers/key_sessions_helper.rb	Sat, 20 Aug 2011 12:22:03 -0700
 app/controllers/home_controller.rb	Thu, 18 Aug 2011 06:59:11 -0700
 doc/README_FOR_APP	Thu, 18 Aug 2011 06:59:11 -0700
-app/mailers/user_mailer.rb	Thu, 18 Aug 2011 06:59:11 -0700
+app/mailers/user_mailer.rb	Sun, 21 Aug 2011 17:33:39 -0700
 app/helpers/keyed_folders_helper.rb	Fri, 19 Aug 2011 14:09:34 -0700
 app/models/public_folder.rb	Sun, 21 Aug 2011 11:49:27 -0700
 app/helpers/layout_helper.rb	Thu, 18 Aug 2011 06:59:11 -0700

@@ -1,4 +1,4 @@
-Filebox::Application.routes.draw do
+Filebucket::Application.routes.draw do
   resources :folders
   resources :assets
   resources :shared_folders

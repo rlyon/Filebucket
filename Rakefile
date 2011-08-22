@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Filebox::Application.load_tasks
+Filebucket::Application.load_tasks

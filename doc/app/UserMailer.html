@@ -236,7 +236,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">invitation_notice_to_admin</span>(<span class="ruby-identifier">invitation</span>)
   <span class="ruby-ivar">@invitation</span> = <span class="ruby-identifier">invitation</span>
   <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;rlyon@uidaho.edu&quot;</span>,
-        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;[Filebox] Invitation sent.&quot;</span> )
+        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;[Filebucket] Invitation sent.&quot;</span> )
 <span class="ruby-keyword">end</span></pre>
             </div><!-- invitation_notice_to_admin-source -->
             
@@ -271,7 +271,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">invitation_to_join</span>(<span class="ruby-identifier">invitation</span>)
   <span class="ruby-ivar">@invitation</span> = <span class="ruby-identifier">invitation</span>
   <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@invitation</span>.<span class="ruby-identifier">invited_user_email</span>,
-        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{@invitation.user.name} has invited you to the IBEST Filebox&quot;</span> )
+        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{@invitation.user.name} has invited you to the IBEST Filebucket&quot;</span> )
 <span class="ruby-keyword">end</span></pre>
             </div><!-- invitation_to_join-source -->
             
@@ -414,7 +414,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">share_notice_to_admin</span>(<span class="ruby-identifier">shared_folder</span>)
   <span class="ruby-ivar">@shared_folder</span> = <span class="ruby-identifier">shared_folder</span>
   <span class="ruby-identifier">mail</span>( <span class="ruby-value">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;rlyon@uidaho.edu&quot;</span>,
-        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;[Filebox] Share request generated.&quot;</span> )
+        <span class="ruby-value">:subject</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;[Filebucket] Share request generated.&quot;</span> )
 <span class="ruby-keyword">end</span></pre>
             </div><!-- share_notice_to_admin-source -->
             
