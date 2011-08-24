@@ -115,7 +115,7 @@ class FoldersController < ApplicationController
   	  @shared_folder = current_user.shared_folders.new
   	  @shared_folder.folder_id = params[:folder_id]
   	  @shared_folder.shared_email = email_address.strip
-  	  shared_user = User.find_by_email(email_address)
+  	  shared_user = User.find_by_email(email_address.strip)
   	  @shared_folder.shared_user_id = shared_user.id if shared_user
   	  @shared_folder.message = params[:message]
   	  @shared_folder.save
