@@ -36,12 +36,13 @@ class FoldersController < ApplicationController
 		@folder = current_user.folders.new
 		if params[:folder_id]
 			@current_folder = current_user.folders.find(params[:folder_id])
-		@folder.parent_id = @current_folder.id
+		  @folder.parent_id = @current_folder.id
 		end
 	end
 
 	def create
 		@folder = current_user.folders.new(params[:folder])
+
 		#@folder.name = params[:name]
 		#if params[:parent_id]
 		#	@current_folder = current_user.folders.find_by_id(params[:parent_id])

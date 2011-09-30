@@ -186,6 +186,14 @@ a {
 	//font-size:12px;
 }
 
+#shared_title {
+	padding:0 15px;
+	line-height:25px;
+	color: #338DCF;
+	font-size: 15px;
+	font-weight: bold;
+}
+
 #menu {
 	width:900px;
 	padding:0;

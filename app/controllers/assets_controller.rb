@@ -9,11 +9,15 @@ class AssetsController < ApplicationController
 	end
 
 	def new
-		@asset = current_user.assets.build
-		if params[:folder_id]
-			@current_folder = current_user.folders.find(params[:folder_id])
-			@asset.folder_id = @current_folder.id
-		end
+	  @current_folder = Folder.find(params[:folder_id]) if params[:folder_id]
+	  
+	  if @current_folder && current_user.has_share_access?(@current_folder)
+      @asset = @current_folder.user.assets.build
+    else
+      @asset = current_user.assets.build
+    end
+
+		@asset.folder_id = @current_folder.id if @current_folder
 	end
 
 	def create

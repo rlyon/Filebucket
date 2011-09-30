@@ -30,6 +30,14 @@
 		</li>
 	</ul>
 <% else %>
-	<h3>This folder is being shared to you by <%= @current_folder.user.name %></h3>
+	<ul id="top_menu">
+		<li class="bolder">
+			<%= link_to "Home", root_url %>
+		</li>
+		<li class="bolder">
+			<%= link_to "Upload files to '#{truncate(@current_folder.name, :length => 10)}'", new_sub_asset_path(@current_folder) %>
+		</li>
+	</ul>
+	<div id="shared_title">This folder is being shared to you by <%= @current_folder.user.name %></div>
 <% end %>
 </div>
