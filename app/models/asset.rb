@@ -9,7 +9,7 @@ class Asset < ActiveRecord::Base
 		:url => "/download/:id",
 		:path => "/mnt/filebox/assets/:username/:folder_id/:basename.:extension"
 
-	validates_attachment_size :uploaded_file, :less_than => 5.gigabytes
+	validates_attachment_size :uploaded_file, :less_than => 10.gigabytes
 	validates_attachment_presence :uploaded_file
 	
 	# Return the filename of an uploaded asset
